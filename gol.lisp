@@ -4,8 +4,7 @@ Game Of Life kata.
 
 (defpackage #:game-of-life
   (:nicknames #:gol)
-  (:use #:cl)
-  (:export))
+  (:use #:cl))
 
 (in-package :game-of-life)
 
@@ -18,6 +17,13 @@ Game Of Life kata.
 (defun cell-alive-p (state)
   (= 1 state))
 
+(defun cell (world i j)
+  (aref world i j))
+
+(defun (setf cell) (val world i j)
+  (setf (aref world i j)
+        val))
+
 (defun cell-lives-p (world i j)
   "Rules:
 
@@ -25,7 +31,7 @@ Game Of Life kata.
    Any live cell with two or three live neighbours lives on to the next generation.
    Any live cell with more than three live neighbours dies, as if by overcrowding.
    Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction."
-  (let ((cell-alive (cell-alive-p (aref world i j)))
+  (let ((cell-alive (cell-alive-p (cell world i j)))
         (living-neighbours (living-neighbours world i j)))
     (cond
       ;; under-population.
@@ -45,7 +51,6 @@ Game Of Life kata.
             (= 3 living-neighbours))
        t)
       (t
-       ;; (error 'zombie-state)
        nil
        ))))
 
@@ -81,7 +86,7 @@ Game Of Life kata.
                    (minusp (cdr coord))
                    (>= (car coord) dimension)
                    (>= (cdr coord) dimension)))
-     collect (aref world (car coord) (cdr coord))))
+     collect (cell world (car coord) (cdr coord))))
 
 (defun test-neighbours ()
   (let ((w1 #2A((0 0 0)
@@ -120,7 +125,7 @@ Game Of Life kata.
     (loop for i below dimension
        do (loop for j below dimension
              when (cell-lives-p world i j)
-             do (setf (aref new-world i j)
+             do (setf (cell new-world i j)
                       1)))
     new-world))
 
@@ -128,7 +133,7 @@ Game Of Life kata.
   (let ((dimension (first (array-dimensions world))))
     (dotimes (i dimension)
       (dotimes (j dimension)
-        (format t " ~a " (aref world i j)))
+        (format t " ~a " (cell world i j)))
       (format t "~&")))
   ;; return the world object, so than we can call
   ;; (print-next-gen *)
@@ -138,8 +143,7 @@ Game Of Life kata.
 (defun print-next-gen (world)
   (print-world (next-gen world)))
 
-
-#|
+"
 
 Some known forms
 ================
@@ -187,4 +191,4 @@ The toad:
 
 and back to normal at the 2nd generation.
 
-#|
+"

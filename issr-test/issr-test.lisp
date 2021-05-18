@@ -1,6 +1,6 @@
 
 #+(or)
-(ql:quickload '("hunchenissr" "markup"))
+(ql:quickload '("hunchenissr" "markup" "log4cl"))
 
 ;; elisp side:
 ;; (add-to-list 'load-path "~/quicklisp/dists/quicklisp/software/markup-20201220-git/")
@@ -17,6 +17,7 @@
                 stop))
 
 (in-package #:issr-test)
+
 (markup:enable-reader)
 
 (defparameter server
@@ -28,10 +29,10 @@
 (defparameter *products* (list))
 
 (defclass product ()
-  ((title :initform nil
+  ((title :initform ""
           :initarg :title
           :accessor title
-          :type 'string)))
+          :type string)))
 
 (defmethod print-object ((obj product) stream)
   (print-unreadable-object (obj stream :type t)
@@ -40,7 +41,7 @@
 (defun create-products ()
   (loop for title in '("foo" "bar" "baz")
      collect (make-instance 'product :title title)))
-#+(or)
+
 (setf *products* (create-products))
 
 (markup:deftag base-template (children &key title)

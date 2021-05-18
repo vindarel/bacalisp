@@ -66,46 +66,46 @@
         <h1>hello world!</h1>
      </base-template>)
 
-(define-easy-handler (todo :uri "/products")
-    (;; GET parameter names go here
-     ;; They come from the input and button names.
-     add-new-task
-     new-task)
-  (let
-      ((add-new-task-p (and add-new-task
-                            new-task
-                            (string= add-new-task "add")
-                            (not (str:emptyp
-                                        ;XXX: str:blankp
-                                  (str:trim new-task))))))
-    (log:info add-new-task-p)
-    (if add-new-task-p
-      (print (setf *products* (append *products*
-                                      (list (make-instance 'product :title new-task)))))
-      ;;TODO: it's currently failing, I can't create a new task.
-      ;; The client sends the GET parameters correctly.
-      (log:info add-new-task new-task))
-    (setf *products* (append *products*
-                             (list (make-instance 'product :title "hacky"))))
-    (format t "~& --- Products: ~s~&" *products*)
+(defparameter todos (list))
 
+(define-easy-handler (products :uri "/products")
+    (add-new-task new-task)
+  (let ((add-new-product-p (and add-new-task
+                                new-task
+                                (string= add-new-task "add")
+                                (not (str:blankp new-task)))))
+    (log:info add-new-task new-task add-new-product-p)
+    (when add-new-product-p
+      (setf *products* (append *products*
+                               (list (make-instance 'product :title new-task)))))
     (write-html
-     <base-template title="My ISSR test" >
-     <h1>Products List</h1>
-     <ul>
-     ,@(loop for product in (reverse *products*)
-          collect
-            <li>
-            ,(progn (title product))
-            </li>)
-     </ul>
-
-     <input name="new-task"
-           placeholder="New task"/>
-    <button action="add-new-task"
-            value="add"
-            onclick="rr(this)">
-      Add
-      </button>
-
-      </base-template>)))
+     <base-template title="Hello Products | ISSR" >
+       <body>
+         <h1>To Do List</h1>
+         <ul>
+           ,@(loop for todo in *products*
+                   for index from 0 below (length *products*)
+                   collect
+                   <li>
+                  ,(progn (title todo))
+                   </li>)
+         </ul>
+         <!-- The value attribute is to remove the content when
+              a new task was just added. The update attribute is
+              to ensure that the value of empty string is updated
+              on the client. -->
+         <input name="new-task"
+                value=(when add-new-product-p
+                        "")
+                update=add-new-product-p
+                placeholder="Product name"
+                onkeydown="if (event.keyCode == 13)
+                             rr({action:'add-new-task',
+                                 value:'add'})"/>
+         <button action="add-new-task"
+                 value="add"
+                 onclick="rr(this)">
+           Add
+         </button>
+       </body>
+     </base-template>)))

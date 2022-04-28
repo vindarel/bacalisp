@@ -160,9 +160,9 @@ little screwdiver    -   46.99
 
 ;; Let's create a `templates/` directory and create:
 ;;
-;; - base.html
+;; - [base.html](https://github.com/vindarel/bacalisp/blob/master/lisp-tutorial-clog-contest/templates/base.html)
 ;;
-;; - products.html, that inherits the base.
+;; - [products.html](https://github.com/vindarel/bacalisp/blob/master/lisp-tutorial-clog-contest/templates/products.html), that inherits the base.
 ;;
 ;; The base template loads Bulma from a CDN, creates a navbar, defines a "content" block that our other templates will override, and a footer.
 ;;
@@ -224,6 +224,8 @@ If you have an issue with the path on the Lisp REPL, on SLIME you can do ,cd (a 
 #+(or)
 (search-products *products* "awesome")
 
+;; Now the search route. It accepts one GET parameter, `q` for "query".
+
 (hunchentoot:define-easy-handler (search-route :uri "/search") (q)
   (let* ((products (search-products *products* q)))
     (djula:render-template* +products.html+ nil
@@ -237,13 +239,13 @@ If you have an issue with the path on the Lisp REPL, on SLIME you can do ,cd (a 
 ;;
 ;; Your search query is seen in the URL parameters:
 ;; http://localhost:6789/search?q=travel
-;; That is usually a good thing. In modern single-page applications, you can loose this, or you have to handle the URL construction yourself.
+;; That is usually a good thing. In modern single-page applications, you loose this, or you have to handle the URL construction yourself.
 ;;
 ;; The search required a page reload. If your app is fast, it might not be an issue.
 ;; However, if we wanted the search to be more interactive, for example showing results as we type, we would need to use JavaScript. Enters CLOG.
 ;;
 ;;
-;; @section{CLOG}
+;; @section CLOG
 ;;
 ;; Can we make our app interactive with @link{https://github.com/rabbibotton/clog/}{CLOG}?
 ;;
@@ -285,9 +287,9 @@ If you have an issue with the path on the Lisp REPL, on SLIME you can do ,cd (a 
 ;;
 
 #|
-The first thing we want to start our CLOG app is the `initialize` function.
+The first thing we want to start our CLOG app is the `initialize` function. Its signature:
  @code
-(on-new-window-handler &key (host 0.0.0.0) (port 8080) (server hunchentoot)
+initialize (on-new-window-handler &key (host 0.0.0.0) (port 8080) (server hunchentoot)
  (extended-routing nil) (long-poll-first nil) (boot-file /boot.html)
  (boot-function nil) (static-boot-html nil) (static-boot-js nil)
  (static-root (merge-pathnames ./static-files/ (system-source-directory clog))))
@@ -298,13 +300,13 @@ files located at STATIC-ROOT. […]
 @end code
 |#
 ;;
-;; It calls our `add-products` functions with a `body` (CLOG object) as argument.
+;; The following calls our `add-products` function with a `body` (CLOG object) as argument.
 (defun start-tutorial ()
   "Start tutorial."
   (initialize 'add-products)
   (open-browser))
 
-;; OK so what do we want to do? We want to create a search input field, and below we display our products. When the user types something, we want to *immediately* start filter the products, and re-display them.
+;; OK so what do we want to do? We want to create a search input field, and to display our products below. When the user types something, we want to *immediately* filter the products, and re-display them.
 
 #|
 
@@ -330,7 +332,7 @@ And the `display-products` function is below:
                           (clog-contest::product-id it)
                           (clog-contest::print-product it)))))
 
-;; Now we want to handle the interactivity. The event to watch is the key up event. In CLOG, we have `set-on-key-up` method. It takes: a CLOG object (the DOM object it watches for events) and a handler function. This function takes two arguments: the CLOG object and the event.
+;; Now we want to handle the interactivity. The event to watch is the key up event. In CLOG, we have the `set-on-key-up` method. It takes: a CLOG object (the DOM object it watches for events) and a handler function. This function takes two arguments: the CLOG object and the event.
 ;;
 ;; In our add-products function below, we create the search input and we listen the key-up event:
 
@@ -368,7 +370,7 @@ And the `display-products` function is below:
 ;;
 ;; There are some caveats that need to be worked on:
 ;;
-;; - if you type a search query of 4 letters quickly, our handler waits for an input of at least 2 characters, but it will be fired 2 other times.
+;; - if you type a search query of 4 letters quickly, our handler waits for an input of at least 2 characters, but it will be fired 2 other times. That will probably fix the blickering.
 ;;
 ;;
 ;; And, as you noticed:
@@ -376,4 +378,11 @@ And the `display-products` function is below:
 ;; - we didn't copy-paste a nice looking HTML template, so we have a bit of work with that :/
 ;;
 ;;
-;; CLOG is not at all limited to websites like this. You can create games (there is a Snake demo), multiplayer applications (there is a chat demo)… all this by doing everything in the backend, in Common Lisp, with a lot interactivity under the fingertips.
+;; CLOG is not at all limited to websites like this. You can create games (there is a Snake demo), multiplayer applications (there is a chat demo)… all this by doing everything in the backend, in Common Lisp, with a lot of interactivity under the fingertips. Try it out!
+
+
+;;
+;;
+;; ---
+;;
+;; By the way, this post was written in a literate program with [Erudite](https://github.com/mmontone/erudite/). Everything is written in a .lisp file, and exported to markdown. Read about it [here](https://lisp-journey.gitlab.io/blog/literate-programming-in-lisp-with-erudite/) and see [its source on GitHub](https://github.com/vindarel/bacalisp/blob/master/lisp-tutorial-clog-contest/clog-contest-tutorial.lisp). You can `wget` this source, open it in your editor and compile the snippets along the way.

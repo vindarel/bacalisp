@@ -163,6 +163,7 @@ little screwdiver    -   46.99
 ;; - [base.html](https://github.com/vindarel/bacalisp/blob/master/lisp-tutorial-clog-contest/templates/base.html)
 ;;
 ;; - [products.html](https://github.com/vindarel/bacalisp/blob/master/lisp-tutorial-clog-contest/templates/products.html), that inherits the base.
+;;  - inside this template, we "include" the search form that we wrote in another template: [search-form.html](https://github.com/vindarel/bacalisp/blob/master/lisp-tutorial-clog-contest/templates/search-form.html). It's a way to factorize HTML code that we can re-use here and there.
 ;;
 ;; The base template loads Bulma from a CDN, creates a navbar, defines a "content" block that our other templates will override, and a footer.
 ;;
@@ -222,7 +223,7 @@ If you have an issue with the path on the Lisp REPL, on SLIME you can do ,cd (a 
 
 ;; Try it:
 #+(or)
-(search-products *products* "awesome")
+(search-products "awesome")
 
 ;; Now the search route. It accepts one GET parameter, `q` for "query".
 

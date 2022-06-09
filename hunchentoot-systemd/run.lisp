@@ -21,10 +21,15 @@
     (uiop:format! t "-------- … and done. Now we have the REPL. --------------~&")
 
 
-    (uiop:format! t "-------- put the server thread on the foreground~&")
+    (uiop:format! t "-------- put the server thread on the foreground for Systemd~&")
     ;; otherwise the Lisp quits instantly.
+    ;;
+    ;; But we don't need this when run from the terminal with make run,
+    ;; in that case we simply get the Lisp REPL waiting for input
+    ;; at the foreground, as usual.
+    ;;
     ;; systemd might even tell you there was a
-    ;; "compilation unit aborted ; caught 1 fatal ERROR condition
+    ;; "compilation unit aborted ; caught 1 fatal ERROR condition"
     (bt:join-thread (find-if (lambda (th)
                                (search "hunchentoot" (bt:thread-name th)))
                              (bt:all-threads)))

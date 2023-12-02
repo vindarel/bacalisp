@@ -1,7 +1,8 @@
-
 ;; libraries:
 ;; CIEL-USER
 ;; or str, alexandria
+
+;; 45' :/ with a "height" typo.
 
 (defparameter input "two1nine
 eightwothree
@@ -14,6 +15,8 @@ zoneight234
 (defparameter *file-input-1* "2023-12-01-a.txt")
 
 ;;; part 1
+;; XXX: digit-char-p
+;; XXX: :from-end
 (defun collect-integers (input)
  (loop for line in (str:lines input) collect
   (loop for char across line
@@ -22,9 +25,10 @@ zoneight234
         if val
           collect val)))
 
+#+(or)
 (collect-integers input)
 
-(defparameter nb-lists '((1 2) (3 8) (1 2 3 4 5) (7)))
+;; (defparameter nb-lists '((1 2) (3 8) (1 2 3 4 5) (7)))
 
 (defun reform-and-sum-pairs (nb-lists)
  (loop for nb-list in nb-lists
@@ -40,15 +44,13 @@ zoneight234
  ;; 54634
 
 ;;; part 2
-(defparameter numbers '(("one" 1)
-                         ("two" 2)
-                         ("three" 3)
-                         ("four" 4)
-                         ("five" 5)
-                         ("six" 6)
-                         ("seven" 7)
-                         ("eight" 8)
-                         ("nine" 9)))
+(defparameter numbers '(("one" 1) ("two" 2) ("three" 3) ("four" 4) ("five" 5) ("six" 6) ("seven" 7) ("eight" 8) ("nine" 9)))
+
+;; ;; lispm:
+;; (defparameter *01-search-strings-values*
+;;   (loop for i from 1 upto 9
+;;         collect (cons (format nil "~a" i) i)
+;;         collect (cons (format nil "~r" i) i)))
 
 (defun starts-with-number (s)
  (some
@@ -75,9 +77,7 @@ zoneight234
                          (if maybe-int
                              maybe-int
                              (starts-with-number s)))
-             if val
-               collect val
-             )))
+             if val collect val)))
 
  #+(or)
  (find-real-numbers input)

@@ -99,7 +99,7 @@
         do (setf multiplier 10)
            (setf nb (* nb multiplier))
            (incf nb digit)
-      if (not (digit-char-p char))
+      else
         do (setf multiplier 1)
            (incf total nb)
            (setf nb 0)

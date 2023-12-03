@@ -14,6 +14,8 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"
                                    (:red 1 :green 2 :blue 6)
                                    (:green 2))))
 
+
+
 (defparameter max-blue 14)
 (defparameter max-red 12)
 (defparameter max-green 13)
@@ -71,10 +73,8 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"
 
 
 (defun make-game-from-line (line)
-  (let ((id (extract-game-id line))
-        (sets/strings line))
-    (dict :id id
-          :sets (get-all-sets sets/strings))))
+  (dict :id (extract-game-id line)
+        :sets (get-all-sets line)))
 
 
 (defun color-nb (color plist)
@@ -108,7 +108,41 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"
 ;; 8
 
 ;; Ensure the right parameters.
-#+(go-for-it)
+#+(or)
 (possible-input-p (str:from-file *file-input*))
 
 ;; YEP! o/
+
+;;; Part 2.
+
+(defun min-required-color (color game)
+  (loop for set in (gethash :sets game)
+        for nb = (or (getf set color) 0)
+        maximize nb))
+
+(defparameter colors '(:red :blue :green))
+
+(defun game-power (game)
+  (apply #'*
+         (loop for color in colors
+               collect (min-required-color color game))))
+#+(or)
+(game-power *game*)
+;; 48
+#+(or)
+(make-game-from-line (third (str:lines input)))
+
+(defun sum-game-powers (games)
+  (loop for game in games
+        sum (game-power game)))
+
+(defun make-games-from-input (input)
+  (mapcar #'make-game-from-line (str:lines input)))
+#+(or)
+(make-games-from-input input)
+
+#+(or)
+(sum-game-powers (make-games-from-input input))
+
+#+(or)
+(sum-game-powers (make-games-from-input (str:from-file *file-input*)))

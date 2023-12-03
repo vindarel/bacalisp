@@ -1,4 +1,15 @@
+;; with ciel-user
+;; or
+;; str, alexandria, dict
+;;
 
+;; Much better color nb extraction:
+;; https://github.com/bo-tato/advent-of-code-2023/blob/49349509df322921ca48be924f446a3f00bdb23c/day2/day2.lisp
+;; (defun get-color (set color)
+;; "Return the number of cubes of COLOR in SET."
+;; (parse-integer (or (scan-to-strings (str:concat "\\d+ " color) set)
+;;                    "0")
+;;                :junk-allowed t))
 
 (defparameter *file-input* "2023-12-02.txt")
 

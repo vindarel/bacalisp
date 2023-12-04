@@ -20,6 +20,8 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11")
      (parse-numbers hand-s))))
 
 (defun parse-numbers (s)
+  ;; just because I want to reuse this parsing loop,
+  ;; otherwise use mapcar parse-integer on str:words
   (loop for char across (str:concat " " s " ")  ;; my algo needs whitespaces.
         for digit = (digit-char-p char)
         with res
@@ -41,6 +43,10 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11")
 (defun hand-matches (hand)
   ;; also
   ;; (count-if (lambda (nb) (find nb (second hand))) (third hand))
+  ;;
+  ;; feedback:
+  ;; length intersection
+  ;; https://github.com/bo-tato/advent-of-code-2023/commit/d62eda2f2cdc38523efc39428cf4bceb2caf55da
   (loop for nb in (third hand)
         count (find nb (second hand))))
 
@@ -81,6 +87,8 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11")
       for id = (hand-id hand)
       for new-cards = (next-n-cards id matches)
       with copies = (dict)
+      ;; feedback: an array instead of a hash-table:
+      ;; (make-array num-cards :initial-element 1)
       do
          (inc-copies new-cards copies)
          (dotimes (n (or (gethash id copies) 0))

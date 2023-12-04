@@ -9,6 +9,9 @@
 #+(or)
 (defparameter *input-lines* (str:lines input)))
 
+;; feedback:
+;; (coerce (read-file-lines "input.txt") 'vector)
+
 
 (defparameter input "467..114..
 ...*......

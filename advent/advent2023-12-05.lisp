@@ -45,13 +45,27 @@ humidity-to-location map:
 (defun extract-line-numbers (line)
   (mapcar #'parse-integer (ppcre:all-matches-as-strings "\\d+" line)))
 
-(defun make-range (source dest n)
+(defparameter *reverse-range* nil)
+
+(defun make-range (source dest n &key seeds-p)
   ;; a plist: then access it with getf.
-  (list :source source
-        :source-start source
-        :source-end (+ source (1- n))
-        :dest dest
-        :range n))
+  (if *reverse-range*
+      (make-reverse-range source dest n :seeds-p seeds-p)
+    (list :source source
+          :source-start source
+          :source-end (+ source (1- n))
+          :dest dest
+          :range n)))
+
+;; for part2.
+(defun make-reverse-range (source dest n &key seeds-p)
+  ;; a plist: then access it with getf.
+  (list :source dest
+        :source-start dest
+        :source-end (+ dest (1- n))
+        :dest source
+        :range n
+        :seeds-p seeds-p))
 
 (defun line-to-map (line)
   (let ((numbers (extract-line-numbers line)))
@@ -70,11 +84,17 @@ humidity-to-location map:
        (- i (getf range :source-start)))))
 
 (defun ranges-lookp (i ranges)
+  (declare (optimize (speed 3) (safety 0)))
   (loop for range in ranges
         for res = (range-lookup i range)
-        if res
-          return res
-        finally (return i)))
+        if res return res
+          finally
+             (return
+               ;; part1: take this value.
+               ;; part2: if we don't fall in a seed range, fail.
+               (if (getf (first ranges) :seeds-p)
+                   nil
+                   i))))
 
 ;; also:
 (defun %ranges-lookup (i ranges)
@@ -89,7 +109,7 @@ humidity-to-location map:
   (assert (equal 50 (ranges-lookp 98 (parse-paragraph (second (SPLIT-PARAGRAPHS input))))))
   )
 
-(defun parse-maps (input)
+(defun parse-maps (input &optional reverse)
   (let* ((paragraphs (split-paragraphs input))
          ;; a list of maps,
          ;; let's suppose they follow each other in the right order.
@@ -101,6 +121,7 @@ humidity-to-location map:
              finally (return maps))))
 
 (defun seed-location (seed maps)
+  (declare (inline seed-location))
   (loop for map in maps
         with next = seed
         do (setf next (ranges-lookp next map))
@@ -117,3 +138,48 @@ humidity-to-location map:
 
 #+solve-it
 (lowest-location (str:from-file *file-input*))
+
+;; part 2
+;; Brute force won't cut it,
+;; lookup caching is of no use.
+;;
+;; We'll start from the location, from zero…
+;; we could probably better study the mappings boundaries.
+
+(defun %lowest-location-brute-force (input)
+  (declare (optimize (speed 3) (safety 0)))
+  (let* ((paragraphs (split-paragraphs input))
+         (seeds (extract-line-numbers (first paragraphs)))
+         (maps (parse-maps input)))
+    ;; iterate by steps of 2: use "on" not "in".
+    (loop for (seed-start range) on seeds by #'cddr
+          minimize
+          (loop with seed integer = (1- seed-start) repeat range
+                minimize (seed-location (incf seed) maps)))))
+
+(defun seeds-ranges (seeds)
+  (loop for (seed range) on seeds by #'cddr
+        collect (make-range seed seed range :seeds-p t)))
+
+(defun reverse-maps (input)
+  (let ((*reverse-range* t))
+    (let* ((paragraphs (split-paragraphs input))
+           (seeds (extract-line-numbers (first paragraphs)))
+           (maps (parse-maps input)))
+      (concatenate 'list (reverse maps)
+                   (list (seeds-ranges seeds))))))
+
+(defun reverse-lowest-location (input)
+  (let ((maps (reverse-maps input)))
+    (loop for location from 0 upto most-positive-fixnum
+          for res = (seed-location location maps)
+          if res return location)))
+
+#+solve-it
+(time (reverse-lowest-location (str:from-file *file-input*)))
+;; Evaluation took:
+;;   87.186 seconds of real time
+;;   XXX: speed this up!
+;;
+;; 26714516
+;; \o/

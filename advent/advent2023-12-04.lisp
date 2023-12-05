@@ -40,6 +40,17 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11")
 #+(or)
 (parse-numbers " 41 48 ")
 
+;; feedback:
+;; (@ccQpein on Twitter)
+#+(or)
+(progn
+  (ppcre:all-matches "\\d+" "1 2 3 49 98 71") ;; (0 1 2 3 4 5 6 8 9 11 12 14)
+  (ppcre:all-matches-as-strings "\\d+" "1 2 3 49 98 71") ;; ("1" "2" "3" "49" "98" "71")
+  ;; so:
+  (mapcar #'parse-integer (ppcre:all-matches-as-strings "\\d+" "1 2 3 49 98 71")) ;; (1 2 3 49 98 71)
+  )
+;; oh-my-god^^
+
 (defun hand-matches (hand)
   ;; also
   ;; (count-if (lambda (nb) (find nb (second hand))) (third hand))
@@ -77,7 +88,9 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11")
 
 (defun inc-copies (ids copies)
   (loop for id in ids
-        for qty = (or (gethash id copies) 0)
+        ;; feedback:
+        ;; don't forget gethash's third argument: default value if not found.
+        for qty = (gethash id copies 0) ;; instead of my original (or (gethash …) 0)
         do (setf (gethash id copies)
                  (1+ qty))))
 
@@ -91,12 +104,15 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11")
       ;; (make-array num-cards :initial-element 1)
       do
          (inc-copies new-cards copies)
-         (dotimes (n (or (gethash id copies) 0))
+         (dotimes (n (gethash id copies 0))
            (inc-copies new-cards copies))
         finally (return copies)))
 
 (defun part2 (input)
   (+
+   ;; feedback:
+   ;; (lispm) avoid apply because of CALL-ARGUMENTS-LIMIT
+   ;; (a big number nonetheless)
    (apply #'+ (hash-table-values (populate-copies input)))
    (length (str:lines input))))
 

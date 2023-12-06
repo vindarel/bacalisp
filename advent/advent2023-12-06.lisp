@@ -73,3 +73,9 @@ Distance:  9  40  200")
 (part2 (str:from-file *file-input*))
 ;; 42550411
 ;; \o/
+;; Evaluation took:
+;; 0.111 seconds of real time
+
+;; Feedback:
+;; > "Basically the quadratic formula."
+;; !

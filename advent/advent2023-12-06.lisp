@@ -28,9 +28,17 @@ Distance:  9  40  200")
 (find-min/max-time :max :race-time 7 :target 9)
 ;; 5
 
-(defun nb-ways-to-win (race-time target)
+(defun nb-ways-to-win/attempt1 (race-time target)
   (- (1+ (find-min/max-time :max :race-time race-time :target target))
      (find-min/max-time :min :race-time race-time :target target)))
+
+(defun nb-ways-to-win (race-time target)
+  ;; = min and max are symetric.
+  (let ((min (find-min/max-time :min :race-time race-time :target target)))
+    (1+ (- race-time (* 2 min)))))
+
+;; the real solution is the quadratic equation.
+
 #+(or)
 (nb-ways-to-win 30 200)
 ;; 9
@@ -48,6 +56,10 @@ Distance:  9  40  200")
 #+solve-it
 (part1 (str:from-file *file-input*))
 ;; 1195150 \o/
+;;
+;; with symetric way, half iterations less:
+;; Evaluation took:
+;;  0.051 seconds of real time
 
 
 ;; part 2

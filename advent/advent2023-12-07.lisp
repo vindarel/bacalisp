@@ -1,7 +1,7 @@
 ;; with libraries:
-;; ciel-user
+;; ciel
 ;; or
-;; ppcre, str, arrow-macros
+;; str, access, serapeum
 
 (uiop:define-package :aoc-2023-07
   (:use :cl :ciel))
@@ -28,15 +28,15 @@ QQQJA 483")
 ;; 5 full house (three and pair)
 ;; 6 four of a kind
 ;; 7 five of a kind
-(defun hand-strength (hand)
-  (let ((uniq (remove-duplicates (access hand :hand))))
+(defun hand-strength (hand &key (slot :hand))
+  (let ((uniq (remove-duplicates (access hand slot))))
     (case (length uniq)
       (1
        (setf (access hand :type-name) :five
              (access hand :type) 7))
       (2
        (let ((disposition (sort (loop for char across uniq
-                                      collect (count char (access hand :hand))) #'<)))
+                                      collect (count char (access hand slot))) #'<)))
          (cond
            ((equal (list 1 3) disposition)
             (setf (access hand :type-name) :three-of-a-kind
@@ -50,7 +50,7 @@ QQQJA 483")
            (t (error "hand-strength issue with ~a uniq cards" uniq)))))
       (3
        (let ((disposition (sort (loop for char across uniq
-                                      collect (count char (access hand :hand))) #'<)))
+                                      collect (count char (access hand slot))) #'<)))
          (cond
            ((equal (list 1 1 3) disposition)
             (setf (access hand :type-name) :three-of-a-kind
@@ -65,7 +65,7 @@ QQQJA 483")
       (5
        (setf (access hand :type-name) :highest-card
              (access hand :type) 1))
-      (t (error "hand-strength unknown combinaison")))
+      (t (error "hand-strength unknown combinaison: ~a uniq cards" (length uniq))))
     hand))
 
 
@@ -88,7 +88,7 @@ QQQJA 483")
 (defun make-hand (pair)
   (dict :hand (first pair)
         :bid (parse-integer (second pair))
-        :type 1  ;; high card: minimum.
+        :type 1
         :type-name :highest-card
         ))
 #+(or)
@@ -116,21 +116,7 @@ QQQJA 483")
   (head< #\K #\T)
 )
 
-(defun card< (c c2)
-  "Compare two cards (characters), digits or heads."
-  (let ((c-digit (digit-char-p c))
-        (c2-digit (digit-char-p c2)))
-    (cond
-      ((and c-digit c2-digit)
-       (< c-digit c2-digit))
-      ((and c-digit (not c2-digit))
-       t)
-      ((and (not c-digit) c2-digit)
-       nil)
-      (t
-       (head< c c2)))))
-
-(defun compare-hands (it that)
+(defun compare-hands (it that &key (test #'card<))
   (if (not (= (access it :type)
               (access that :type)))
       (< (access it :type) (access that :type))
@@ -138,14 +124,14 @@ QQQJA 483")
       (loop for i from 0 upto (1- (length (access it :hand)))
             for c = (elt (access it :hand) i)
             for c2 = (elt (access that :hand) i)
-            for c-lower = (card< c c2)
+            for c-lower = (funcall test c c2)
             for foo = (log:debug i c c2 (card< c c2))
             if (not (equal c c2))
               return c-lower
             )))
 
-(defun sort-hands (hands)
-  (stable-sort (copy-seq hands) #'compare-hands))
+(defun sort-hands (hands &key (test #'compare-hands))
+  (stable-sort (copy-seq hands) test))
 
 (defun total-winnings (sorted-hands)
   (loop for hand in sorted-hands
@@ -161,3 +147,81 @@ QQQJA 483")
 
 #+solve-it
 (total-winnings (sort-hands (parse-hands (str:from-file *file-input*))))
+
+;; part 2
+
+(defun card<-joker-lower (c c2)
+  "Compare two cards (characters), digits or heads,
+  J is always the lowest value."
+  (cond
+    ((equal #\J c)
+     t)
+    ((equal #\J c2)
+     nil)
+    (t
+     (card< c c2))))
+;; (CARD<-JOKER-FIRST #\J #\Q)
+;; T
+
+(defun pairs<-joker-first (c c2)
+  "This time work on a cons cell with card character, occurences."
+  (cond
+    ;; let's put the J in front:
+    ((equal #\J (car c))
+     nil)
+    ((equal #\J (car c2))
+     t)
+    (t
+     ;; Sort on number of occurences.
+     (< (cdr c) (cdr c2)))))
+
+(defun hand-repartition (s)
+  "Return a list of pairs: character, nb of occurences,
+  but with the joker always first."
+  (let ((uniq (remove-duplicates s)))
+    (reverse
+     (sort (loop for char across uniq
+                 collect (cons char (count char s)))
+           #'pairs<-joker-first))))
+#+(or)
+(hand-repartition "T55J5")
+;; ((#\J . 1) (#\5 . 3) (#\T . 1))
+;; (hand-repartition "KK677")
+
+(defun hand-strength/part2 (hand)
+  (let* ((new-hand (access hand :hand))
+         (repartition (hand-repartition new-hand))
+         (second-best (or (car (second repartition))
+                          ;; When we have only Js !
+                          #\A)))
+    ;; Jokers?
+    (when (equal #\J (car (first repartition)))
+      (log:debug "joker! second best card ~a" (second repartition))
+      (setf new-hand
+            (str:replace-all "J" second-best new-hand)))
+
+    ;; Always record new-hand slot for part2.
+    (setf (access hand :new-hand)
+          (str:replace-all "J" second-best new-hand))
+
+    ;; Normal strength lookup, but on our new field:
+    (hand-strength hand :slot :new-hand)
+    ))
+
+(defun parse-hands/part2 (input)
+  (mapcar (lambda (pair)
+            (hand-strength/part2 (make-hand pair)))
+          (parse-input input)))
+
+(defun compare-hands/part2 (it that)
+  (compare-hands it that :test #'card<-joker-lower))
+
+(defun sort-hands/part2 (hands)
+  (stable-sort (copy-seq hands) #'compare-hands/part2))
+
+#+(or)
+(total-winnings (sort-hands/part2 (parse-hands/part2 input)))
+
+#+solve-it
+(total-winnings (sort-hands/part2 (parse-hands/part2 (str:from-file *file-input*))))
+;; 251224870 \o/

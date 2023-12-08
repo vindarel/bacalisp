@@ -17,15 +17,17 @@ ZZZ = (ZZZ, ZZZ)")
 
 (defun parse-input (input)
   (let* ((lines (str:lines input))
-         (map (dict :instructions (first lines))))
+         (map (dict :instructions (first lines)))
+         (starters (list)))
     (loop for line in (subseq lines 2)
           for elts = (parse-line line)
           if (str:ends-with-p "A" (first elts))
-            do (print (first elts))
+            do (push (first elts) starters)
           do (setf (gethash (first elts) map)
                    (cons (second elts)
                          (third elts))))
-    map))
+    (setf (gethash :starters map) starters)
+     map))
 
 (defun solved-part1 (key)
   (equal "ZZZ" key))
@@ -63,3 +65,17 @@ ZZZ = (ZZZ, ZZZ)")
 ;; "AAA"
 ;; "SHA"
 ;; "DLA"
+
+(defun solve-all (map)
+  (mapcar (lambda (start)
+            (walk map :start start :solved-p #'solved-part2))
+          (gethash :starters map)))
+
+(defun %part2 (map)
+  (apply #'lcm (solve-all map)))
+
+(defun part2 (input)
+  (%part2 (parse-input (str:from-file *file-input*))))
+
+;; 14935034899483
+;; \o/

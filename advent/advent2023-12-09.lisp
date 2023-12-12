@@ -2,10 +2,6 @@
 (uiop:define-package :aoc-2023-09
   (:use :cl :ciel))
 
-;; Feedback:
-;; serapeum:frequencies sequence
-;;
-
 (in-package :aoc-2023-09)
 
 (defparameter *file-input* "advent2023-12-09.txt")

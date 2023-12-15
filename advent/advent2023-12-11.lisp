@@ -17,10 +17,11 @@
 .......#..
 #...#.....")
 
-(defvar grid (list))
+(defvar *grid* (list))
 
 (defun parse-input (input)
-  (str:lines input))
+  (setf *grid*
+        (str:lines input)))
 
 (defun lines-without-galaxies (lines)
   (loop for line in lines
@@ -39,6 +40,7 @@
   (lines-without-galaxies (inverse-grid lines)))
 
 (defun expand-grid (lines)
+  ;; I actually expand it… even though part 2 clearly makes one think of another strategy.
   (let ((expand-lines (lines-without-galaxies lines))
         (expand-cols (columns-without-galaxies lines)))
     (loop for line in lines
@@ -81,28 +83,22 @@
                    do (push (dict :coord (cons i j)
                                   :id nb)
                             galaxies)
-                      (incf nb)
-                      (log:info nb)))
+                      (log:debug nb)
+                      (incf nb)))
   galaxies)
-
-;; (defun nb-pairs (galaxies)
-;;   ;; mmh… closure or save the nb somewhere or max of values?
-;;   ;; 8^2 / 2
-;;   (/ (expt (1- (length (hash-table-values galaxies))) 2)
-;;      2))
 
 (defun make-pairs (x galaxies)
   (loop for y in galaxies
-        ;; collect (list (gethash :id x) (gethash :id y))))
         collect (list x y)))
 
-(defvar pairs nil)
+(defparameter pairs nil)
 
 (defun all-pairs (galaxies)
+  (setf pairs
   ;; The trick to get the head, the rest of the list:
   (loop for (x . more) on (reverse galaxies)  ;; we used push.
         ;; nconc: like collect but return a flat list (see CL Cookbook).
-        nconc (make-pairs x more)))
+        nconc (make-pairs x more))))
 
 (defun coord-i (ht)
   (car (gethash :coord ht)))
@@ -137,3 +133,77 @@
 #+solve-it
 (part1 (str:from-file *file-input*))
 ;; 9605127 \o/
+
+;; part 2
+
+(defparameter *adder* 1000000 "Age of the galaxies.")
+
+(defun collect-list (x y)
+  ;; XXX: I'd rather work with ranges!
+  (loop for i from (min x y)
+          below (max x y)
+        collect i))
+
+(defun count-steps-with-expansion (pair &key (grid *grid*) (adder *adder*))
+  (let ((a (first pair))
+        (b (second pair))
+        (expand-lines (lines-without-galaxies grid))
+        (expand-cols (columns-without-galaxies grid))
+        (steps 0))
+
+    (setf steps
+          (+ (abs (- (coord-i b)
+                     (coord-i a)))
+             (abs (- (coord-j b)
+                     (coord-j a)))))
+
+    (log:debug "steps normal: ~a" (count-steps pair))
+
+    (when-let ((list-to-expand (intersection expand-cols
+                                             (collect-list (coord-i a) (coord-i b)))))
+      (log:debug list-to-expand)
+      (log:debug "adding " (* adder (length list-to-expand)))
+      (incf steps (* adder (length list-to-expand)))
+      (log:debug "removing " (length list-to-expand))
+      (decf steps (length list-to-expand))
+      )
+
+    (when-let ((cols-to-expand (intersection expand-lines
+                                             (collect-list (coord-j a) (coord-j b)))))
+      (log:debug expand-cols cols-to-expand)
+      (log:debug "and adding" (* adder (length cols-to-expand)))
+      (incf steps (* adder (length cols-to-expand)))
+      (log:debug "and removing " (length cols-to-expand))
+      (decf steps (length cols-to-expand))
+      )
+
+    steps))
+
+(defun get-galaxy (id)
+  (find id galaxies :from-end t :key (lambda (it) (gethash :id it))))
+
+(defun steps-between-with-expansion (id id2)
+  (let ((a (find id galaxies :from-end t :key (lambda (it) (gethash :id it))))
+        (b (find id2 galaxies :from-end t :key (lambda (it) (gethash :id it)))))
+    (count-steps-with-expansion (list a b))))
+;; (steps-between-with-expansion 4 8) ;; which is 5 & 9
+
+
+(defun count-all-steps-with-expansion (pairs &optional (grid *grid*))
+  (reduce #'+ (mapcar #'count-steps-with-expansion pairs)))
+
+(defun part2 (input)
+  (-> input
+    parse-input
+    ;; expand-grid
+    collect-galaxies
+    all-pairs
+    count-all-steps-with-expansion
+    ))
+
+;; age 10 => 1030
+;; age 100 => OK
+
+#+ciel
+(part2 (str:from-file *file-input*))
+;; not OK :(

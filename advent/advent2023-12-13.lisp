@@ -2,7 +2,7 @@
 (uiop:define-package :aoc-2023-13
   (:use :cl :ciel))
 
-(in-package :aoc-2023-11)
+(in-package :aoc-2023-13)
 
 (defparameter *file-input* "advent2023-12-13.txt")
 
@@ -49,7 +49,7 @@
 (defun parse-pattern (pattern)
   (mapcar #'parse-line (str:lines pattern)))
 
-(defun is-symetric (mark &key (hashes *hashes*))
+(defun is-symetric (mark &key hashes)
   (when (< 0 mark (length hashes))
     (loop for i from 0
           until (or (zerop (- mark i))

@@ -59,9 +59,7 @@
   ;; Count each nb.
   (loop with counts = (dict)
         for nb in col
-        for count = (gethash nb counts 0)
-        do (setf (gethash nb counts)
-                 (1+ count))
+        do (incf (gethash nb counts 0))
         finally (return counts)))
 
 #++

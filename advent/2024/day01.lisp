@@ -1,6 +1,9 @@
 (uiop:define-package :aoc-2024-01
     (:use :cl
      :ciel  ;; for libraries: str and serapeum:dict and macro ^ (lambda shortcut)
+          ;; CIEL also makes it easy to run a .lisp file as a script from the terminal
+          ;; (with simpler CLI args, and all CIEL libraries baked in, so fast start-up times.
+          ;; See below.)
      ))
 
 (in-package :aoc-2024-01)
@@ -90,3 +93,17 @@
 ;; 23529853
 
 ;; o/
+
+;;
+;; Running as a script from the terminal:
+;;
+;; $ ciel day01.lisp
+;;
+;; and that's it.
+;;
+
+#+ciel
+(format t "AOC day 01-part1 solution is: ~a~&" (part1 (str:from-file *file-input-1*)))
+
+#+ciel
+(format t "AOC day 01-part2 solution is: ~a~&" (part2 (str:from-file *file-input-1*)))

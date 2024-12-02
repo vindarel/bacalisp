@@ -58,12 +58,16 @@
 ;; 1388114
 
 
-(defun count-occurences (col)
+(defun count-occurences (col &aux (counts (dict)))
   ;; Count each nb.
-  (loop with counts = (dict)
-        for nb in col
-        do (incf (gethash nb counts 0))
-        finally (return counts)))
+  (dolist (nb col counts)
+    (incf (gethash nb counts 0)))
+
+  ;; (loop with counts = (dict)
+  ;;       for nb in col
+  ;;       do (incf (gethash nb counts 0))
+  ;;       finally (return counts))
+  )
 
 #++
 (count-occurences (second '((1 2 3 3 3 4) (3 3 3 4 5 9))))
@@ -101,6 +105,7 @@
 ;;
 ;; and that's it.
 ;;
+;; (fast start-up: runs in 0.03s)
 
 #+ciel
 (format t "AOC day 01-part1 solution is: ~a~&" (part1 (str:from-file *file-input-1*)))

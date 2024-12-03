@@ -60,7 +60,7 @@
 ;; 2
 
 #+ciel
-(format t "solution day2: ~a~&"(part1 (str:from-file *file-input*)))
+(print (part1 (str:from-file *file-input*)))
 ;; 670
 ;; o/
 

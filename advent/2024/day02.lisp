@@ -67,7 +67,7 @@
 (defun cut-row (row i)
   (concatenate 'list
                (subseq row 0 i)
-               (subseq row (1+ i) (length row))))
+               (subseq row (1+ i))))
 
 (defun maybe-safe-row (row &key (recur t))
   (when (stringp row)

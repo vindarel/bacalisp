@@ -32,7 +32,7 @@
                               (t
                                (return nil)))
         for step = (abs (- next cur))
-        if (not (<= 1 step 3))
+        if (not (<= step 3))
           do (return nil)
         if (not order)
           do (setf order current-order)

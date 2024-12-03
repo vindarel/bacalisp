@@ -18,6 +18,7 @@
 (defparameter *file-input* "input-day02.txt")
 
 (defun safe-row (row)
+  ;; see non-loop function below!
   (when (stringp row)
     (setf row (mapcar #'parse-integer (str:words row))))
   (loop :for rest :on row  ;; "on" advances on the list one by one.
@@ -42,7 +43,6 @@
 #++
 (progn
   (safe-row "7 6 4 2 1")
-  ;; ((7 6) (6 4) (4 2) (2 1) (1 NIL))
 
   (safe-row "1 2 7 8 9")
   ;; NIL
@@ -90,8 +90,8 @@
         if (not (<= 1 step 3))
           do (if recur
                  (return (or
-                          (maybe-safe-row (cut-row row (max (1- i) 0)) :recur nil)
                           (maybe-safe-row (cut-row row (max (1+ i) 0)) :recur nil)
+                          (maybe-safe-row (cut-row row (max (1- i) 0)) :recur nil)
                           (maybe-safe-row (cut-row row i) :recur nil)
                           ))
                  (return nil))
@@ -145,3 +145,31 @@
 
 #+ciel
 (format t "solution day2-part2: ~a~&"(part2 (str:from-file *file-input*)))
+
+;;;
+;;; More.
+;;;
+;;; Reading at others' solutions.
+;;;
+
+;; after reading a functional Clojure solution
+;; https://www.reddit.com/r/adventofcode/comments/1h4ncyr/2024_day_2_solutions/m03ajiy/
+(defun functional-safe-row (row)
+  (when (stringp row)
+    (setf row (mapcar #'parse-integer (str:words row))))
+  (let ((ascendent (apply #'< row))
+        (descendent (apply #'> row))
+        (correct-deltas (every (^ (delta) (<= (abs delta) 3))
+                               (rest (serapeum:deltas row)))))
+    (and correct-deltas (or ascendent descendent))))
+
+(defun functional-part-1 (input)
+  (->> input
+    (str:lines)
+    (remove-if-not 'functional-safe-row)
+    (length)))
+
+;; usage and test:
+#++
+(functional-safe-row '(1 2 7 8 9))
+;; NIL

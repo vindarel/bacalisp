@@ -1,3 +1,7 @@
+
+#+(or)
+(ql:quickload '(str uclp serapeum))
+
 (uiop:define-package :aoc-2024-03
     (:use :cl
           :uclp  ;; PEG grammars, à la Janet. Not in Quicklisp.
@@ -27,11 +31,30 @@
     :nb (between :d 1 3)
     :main (sequence :mul "(" :nb "," :nb ")")))
 
+;; EDIT
+;; Learning PEGs.
+;; This grammar returns the captures as strings.
+(defparameter mul-grammar/capture
+  '(grammar
+    :mul (capture "mul")
+    :nb  (capture (between :d 1 3))
+    :main (sequence :mul "(" :nb "," :nb ")")))
+
+#++
+(match MUL-GRAMMAR/CAPTURE "mul(3,4)mul(1,2)")
+;; ("mul" "3" "4")
+;;
+;; But it is strict, when it should ignore characters as in "x-+ymul(3,4)"
+;;
+;; Also the match matches… once. Is there a match-all?
+
+
 #++
 (find-all MUL-GRAMMAR *input*)
 
 ;; But how do we get the matches as text?
 ;; no built-in way?
+;; (EDIT: see notes just above, but I couldn't find how to replace this function anyways)
 (defun matches-as-strings (s)
   (let ((indexes (find-all mul-grammar s)))
     (loop for i in indexes
@@ -119,3 +142,7 @@
 #++
 (print (part2 (str:from-file *file-input*)))
 ;; 82857512 o/
+
+;;;
+;;; Notes
+;;;

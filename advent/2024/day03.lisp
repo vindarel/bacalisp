@@ -20,6 +20,13 @@
 
 (in-package :aoc-2024-03)
 
+;;;
+;;; Trying this new PEG parser:
+;;; https://github.com/ravi-delia/uclp
+;;;
+;;; in day03-parseq.lisp, I try another one
+;;; (and it's a bit easier).
+;;;
 
 (defparameter *input* "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))")
 

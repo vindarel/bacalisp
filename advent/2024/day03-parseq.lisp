@@ -11,8 +11,10 @@
 
 (defrule int ()
     digit
-  ;; the integer rule doesn't work?
-  ;; is it necessary to call parse-integer on the result, no number right off?
+  ;; the integer rule doesn't work? => only with real integers with input as a LIST (not string).
+  ;; parseq accepts sequences as input: strings, lists, vectors. Not only strings.
+  ;; same for number
+  ;; digit is to match a numeric character, in a string.
   (:function (lambda (arg) (parse-integer (string arg)))))
 
 (defrule max3ints ()
@@ -24,7 +26,7 @@
 ;; Get integers and multiply them.
 (parseq:defrule mul ()
     (and "mul(" max3ints "," max3ints ")")
-  ;; this gets an annoying SBCL warning.
+  ;; this produces an annoying SBCL warning.
   (:function (lambda (&rest args) (* (nth 1 args) (nth 3 args)))))
 
 

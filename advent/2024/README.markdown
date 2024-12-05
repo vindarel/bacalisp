@@ -25,7 +25,19 @@ https://github.com/ravi-delia/uclp
 
 ### day 04 - a map of characters
 
+represent the grid as a hash-table: keys are the coordinates as one object.
 
 - atgreen: https://www.reddit.com/r/adventofcode/comments/1h689qf/2024_day_4_solutions/m0ejih1/ building a hash-table with keys as complex numbers (or list or else) with (i j) and values the characters.
 
+### day 05
+
 ## Others
+
+- https://github.com/ak-coram/advent/blob/main/2024/
+
+```lisp
+(ppcre:do-register-groups ((#'parse-integer x y))
+          ("(\\d+)\\|(\\d+)" rule-input)
+```
+
+- https://buffer.thebitmage.com/sitemap?stack=%2F20241202121706-advent_of_code_2024.html

@@ -1,7 +1,7 @@
 (defpackage :aoc-2024-07
   (:use :cl
-        ;; :defclass-std
-   :ciel))
+   :ciel  ;; for the libraries: cl-str ppcre
+   ))
 
 (in-package :aoc-2024-07)
 
@@ -18,7 +18,8 @@
 21037: 9 7 18 13
 292: 11 6 16 20")
 
-(defparameter *operators* '(+ *))
+(defparameter *operators-1* '(+ *))
+(defparameter *operators-2* '(+ * \|))
 
 (defun parse-input (input)
   (loop for line in (str:lines input)
@@ -27,47 +28,54 @@
         for inputs = (rest nbs)
         collect (list test-value inputs)))
 
-(defun permutations (operators &key length &aux perms)
-  ;TODO: augment nb of operators.
-  ;;THIS IS NOT WORKING
-  ;;and generating all permutations will likely be too expensive.
-  (alexandria:map-permutations (^ (it)  (push it perms))
-                               operators
-                               :length (or length (length operators)))
-  perms)
+(defparameter *ops*
+  (dict '+ (lambda (a b) (+ a b))
+        '* (lambda (a b) (* a b))
+        '\| (lambda (a b) (parse-integer (str:concat (princ-to-string a) (princ-to-string b))))))
 
-(defun intersperse (nbs operators)
-  "operators: a list of the right length that fits in-between nbs, an element of permutations."
-  (remove-if #'null
-    (loop for i from 0 to (length operators)
-        collect (nth i nbs)
-        collect (nth i operators))))
+;; let's NOT compute the operators' permutations,
+;; but try them all at each place, and exit early.
+(defun compute-line (target nbs operators)
+  (labels ((rec (i result)
+             (cond
+               ((> result target)
+                (return-from rec 0))
+               ((= i (length nbs))
+                (return-from rec (if (= result target)
+                                     target
+                                     0)))
+               (t
+                (loop for op in operators
+                      for res = (rec (1+ i)
+                                     (funcall (gethash op *ops*)
+                                              result
+                                              (nth i nbs)))
+                      if (= res target)
+                        return res
+                      finally (return 0))))))
+    (rec 1 (nth 0 nbs))))
 
-(defun compute-line (ops)
-  (loop with i = 0
-        while (< i (1- (length ops)))
-        ;; for l = (log:info i ops)
-        for x = (or x (nth i ops))
-        for op = (or op (nth (1+ i) ops))
-        for y = (or y (nth (+ 2 i) ops))
-        ;; for _ = (log:info x op y)
-        for res = (funcall op x y)
-        do (setf x res
-                 op nil
-                 y nil)
-        do (incf i 2)
-        finally (return res)))
 #++
-(eval-line (intersperse '(10 19) '(*)))
+(compute-line (first (first *parsed-input*)) (second (first *parsed-input*)) *operators-1*)
 
-(defun can-be-true (elts &optional (operators *operators*))
-  (let* ((test-value (first elts))
-         (nbs (second elts))
-         (permutations (permutations operators :length (1- (length nbs)))))
-    (loop for perm in permutations
-          for ops = (print (intersperse nbs perm))
-          if (equal test-value
-                    (compute-line ops))
-            return t)))
+(defun part-1 (input)
+  (loop for in in (parse-input input)
+        sum (compute-line (first in) (second in) *operators-1*)))
 
-;; SHIT the list of operators doesn't always fit :/
+#++
+(part-1 *input*)
+;; 3749
+
+#++
+(part-1 (str:from-file *file-input*))
+;; 6392012777720
+;; 0.035 seconds of real time
+
+(defun part-2 (input)
+  (loop for in in (parse-input input)
+        sum (compute-line (first in) (second in) *operators-2*)))
+
+#++
+(part-2 (str:from-file *file-input*))
+;; 61561126043536 o/
+;; 1.947 seconds  too high!

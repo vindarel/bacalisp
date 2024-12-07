@@ -6,6 +6,14 @@ I usually use my CIEL package, to get libraries out of the box, and to
 run the .lisp files as a script from the terminal (not that I do it,
 just to demo).
 
+Other goals:
+
+- try libraries this year. Ideas:
+  - parseq for PEG grammars
+  - FSet
+  - Coalton
+
+
 ### day 01
 
 remind that gethash gets a default value. `dolist` and `&aux` is concise (reddit).
@@ -49,8 +57,18 @@ My part 1 doesn't use `loop` o/ (recursion)
 
 others:
 
+- https://github.com/ak-coram/advent/blob/main/2024/06.lisp
 - [topaz](https://topaz.github.io/paste/#XQAAAQC+DwAAAAAAAAAUGQimgx+p6OIwQNpuWOKVFo+AdfvjN2jklHiFmk2KTRBc9YTJjNXnYRyfNsLNWyrnGUBpyYZvCr5JClW/2r0kt/FZ0EjFc7qJblmV+b5ENyVT0gIZ8q6gm1OoQmfm9wmsUtHx0A2Pe7cSwSu1pgEhJ1LSsNmwT/q3g5ngmvPYE7NtJ+DwWK8pF2Sg9MqTVMRzBEGn9aatd0grHt78r+8DfFrtPdRKvh+MxS3pBNDAkVSlRP/8setnPaa8Un+SfhyhpVpwPYdUgA9lhJrixokD9Dl1x2z63nMZPs/uZgiTy99VhlY5lVh8BeNv8FVKIxmSFoXhtOF9v4JvdCNmHs/Tjpm8Hj4BACWkYC+nr3+XeOCByn1Nrb1brJOUsZoGspWzRcMe4rkKBzQL32UGSlxFlttjo2p4Xk/52OaKYkvMFO71wU+DP9vAKUzclN13iMTOfvU/NOsH8AkI0AzI5/UDGaXiiuTIS2lTW+R3vz01T/YtyRlOwoOLXzoM+uAXLRAK1mUd1mqy7/dQfzQbU8Ysz4Ff8vTDBhGtDbrUJx/8ULZD79+y1rIizsgT4JEDy1S0GK17d5lRmtG08PocI4Bluc+Kc0TTxuJCxBOiWW+nIXcIHyuR0jA7ls1hXQ0OjzbjyfFYBzmLc8zXfFFR/yQj2cvvVVwksNogJJJ6mBqgGKdgTKlIAS0u36OTBuHyN7t4WLOks7mIiciNxl6EFbnw4NiCR17DCbSajRyDXXQBCfMfOFekCPTVLVF+cUmPnsD7ZXNRX/88K8o8BN/zBxwlJJAvGVv5acnXo+H+JLv7mE/tuRcKtidVg1Vf9tn3TreJVflZeI9VmVWyvBwI1EAH2PwRqKaO9aIUEjs5mUifFEZLqrpds8gNLBXz5P2+/u5o+2EibeqEVNa73I0MCBXGy8sHnI1KG94oqqMzb0nfFtPQVlGS4EeR6XPolzkKQeTP2+t2F64fIOShG0a8unD4qxWr78cL0k2BAs9KFzu6gMYDjzvdq59yvMYweWlBWtUjGvvbUgHPwhNctr1mjiyib34qmDqHTwP1VpXwaPzT1XYJygE9aA2rEHWT83b3VAWFahVRW+s+0p191xv3JMtSpG2iW/vaExCD/HEY0ELjL0gKo5Mq294o8rjUvHX4D4eRIr6tRi6aVRg6QXFZ4kL1ADK3N1ptWgsqU7iQOwFBaYb8yB5OR48oM0lPvMrIvmSCZqSfJHQ9k9HZJzo1OcWlAf+aVgkzQLp+CG0tIVvtKaMCN59HXcj2IqM/VEx/vDbgccPpnAC0EkwDBH6D5v1WiKLF529oOaZbi7k472Z/feuqBqBlFwwvckF+LU1JzwOW/Y+l+HtaZU7Rhqj4hcDRl0HVH8JsUBK8MU+wSipf//FpiKA=)
 - https://old.reddit.com/r/adventofcode/comments/1h7tovg/2024_day_6_solutions/m0rouxb/
+
+### day 07 - calculation machine, permutations
+
+Let's *not* compute all the permutations (alexandria:map-permutations isn't enough, we have too few operators for the number of numbers.
+
+We recurse, try all operators, and stop as early as possible.
+
+- [reddit day07](https://www.reddit.com/r/adventofcode/comments/1h8l3z5/2024_day_7_solutions/)
+
 
 ## Others
 

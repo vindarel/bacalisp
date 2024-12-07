@@ -111,6 +111,7 @@
 
 #++
 (part-1 *input*)
+;; 41
 
 #++
 (part-1 (str:from-file *file-input*))

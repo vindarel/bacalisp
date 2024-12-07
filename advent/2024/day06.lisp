@@ -47,7 +47,7 @@
   (when cell
     (equal (gethash :char cell) #\#)))
 
-(defun next-x (position direction &aux next-x)
+(defun next-x (position direction)
   (case direction
     (:up (realpart position))
     (:down (realpart position))
@@ -99,8 +99,6 @@
         (complex (next-x position direction) (next-y position direction)))
 
   (setf next-cell (gethash next-position grid))
-
-  (log:debug "~a:~a " direction next-position)
 
   (walk :grid grid :input input
         :cell next-cell

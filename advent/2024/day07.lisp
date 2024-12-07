@@ -29,8 +29,8 @@
         collect (list test-value inputs)))
 
 (defparameter *ops*
-  (dict '+ (lambda (a b) (+ a b))
-        '* (lambda (a b) (* a b))
+  (dict '+ #'+
+        '* #'*
         '\| (lambda (a b) (parse-integer (str:concat (princ-to-string a) (princ-to-string b))))))
 
 ;; let's NOT compute the operators' permutations,

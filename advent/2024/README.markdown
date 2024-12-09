@@ -71,6 +71,21 @@ We recurse, try all operators, and stop as early as possible.
 - with the Screamer library: [bo-tato on reddit](https://www.reddit.com/r/Common_Lisp/comments/1h94tfe/advent_of_code_2024_day_7_with_screamer_non/)
 
 
+### day 08 - positions on a map, permutations
+
+This time, a perfect use of alexandria's `map-permutations`.
+
+```
+  Documentation:
+    Calls function with each permutation of LENGTH constructable
+    from the subsequence of SEQUENCE delimited by START and END. START
+    defaults to 0, END to length of the sequence, and LENGTH to the
+    length of the delimited subsequence.
+```
+
+So IIUC, it doesn't *cons*.
+
+https://dev.to/vindarel/advent-of-code-alexandrias-map-permutations-was-perfect-for-day-08-common-lisp-tip-16il
 
 
 ## Others

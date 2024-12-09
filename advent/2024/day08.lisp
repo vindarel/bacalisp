@@ -1,6 +1,6 @@
 (defpackage :aoc-2024-08
   (:use :cl
-   :ciel  ;; for the libraries: cl-str ppcre
+   :ciel  ;; for the libraries: cl-str trivial-do (dohash) serapeum (dict) alexandria (map-permutations)
    ))
 
 (in-package :aoc-2024-08)
@@ -65,6 +65,7 @@
           ))
      antennas
      :length 2
+     :copy nil
     )
     *antinodes*))
 

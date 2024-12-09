@@ -68,11 +68,14 @@ Let's *not* compute all the permutations (alexandria:map-permutations isn't enou
 We recurse, try all operators, and stop as early as possible.
 
 - [reddit day07](https://www.reddit.com/r/adventofcode/comments/1h8l3z5/2024_day_7_solutions/)
+- with the Screamer library: [bo-tato on reddit](https://www.reddit.com/r/Common_Lisp/comments/1h94tfe/advent_of_code_2024_day_7_with_screamer_non/)
+
+
 
 
 ## Others
 
-- https://github.com/ak-coram/advent/blob/main/2024/
+- https://github.com/ak-coram/advent
 
 ```lisp
 (ppcre:do-register-groups ((#'parse-integer x y))

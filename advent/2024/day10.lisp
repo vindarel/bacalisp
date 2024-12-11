@@ -54,9 +54,11 @@
 8.....8
 9.....9")
 
-(defun next-step (grid point &key dimensions (visited (dict)) path trails)
-  (when (gethash point visited)
-    (return-from next-step))
+(defun next-step (grid point &key dimensions (visited (dict)) path trails
+                               is-part-2)
+  (unless is-part-2
+    (when (gethash point visited)
+      (return-from next-step)))
   (setf (gethash point visited) t)
   (push point path)
   (when (= 9 (gethash point grid))
@@ -69,10 +71,11 @@
         if (and (valid-point-p next dimensions)
                 (incremental-step-p point next grid))
           ;; nconc allows to return a list of lists without many parens nesting.
-          nconc (next-step grid next :visited visited :dimensions dimensions :path path)
+          nconc (next-step grid next :visited visited :dimensions dimensions :path path
+                           :is-part-2 is-part-2)
         ))
 
-(defun find-trails (input)
+(defun find-trails (input &key is-part-2)
   (let* ((grid/starts (parse-input input))
          (grid (first grid/starts))
          (starts (second grid/starts))
@@ -81,10 +84,10 @@
                            (length lines))))
     (loop for start in starts
           for _ = (log:info "starting from ~s" start)
-      nconc (next-step grid start :dimensions dimensions))))
+      nconc (next-step grid start :dimensions dimensions :is-part-2 is-part-2))))
 
-(defun count-trailheads (input)
-  (length (find-trails input)))
+(defun count-trailheads (input &key is-part-2)
+  (length (find-trails input :is-part-2 is-part-2)))
 
 (defparameter *input-3* "..90..9
 ...1.98
@@ -120,3 +123,7 @@
 #++
 (count-trailheads (str:from-file *file-input*))
 ;; 733 o/
+
+#++
+(count-trailheads (str:from-file *file-input*) :is-part-2 t)
+;; 1514 o/

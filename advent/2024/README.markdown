@@ -87,6 +87,25 @@ So IIUC, it doesn't *cons*.
 
 https://dev.to/vindarel/advent-of-code-alexandrias-map-permutations-was-perfect-for-day-08-common-lisp-tip-16il
 
+### day 09 - disk defragmenter
+
+### day 10 - finding mountain paths
+
+a map, a simple algo to explore and walk a grid.
+
+
+### day 11 - exponentially multiplicating stones - recursion, memoization
+
+Using fare-memoization simplified my reasoning and solution by
+far. Then it was a regular recursive count.
+
+### day 12 - maps, areas, sides
+
+My part 02 isn't efficient (easy fix ups).
+
+
+- https://www.reddit.com/r/adventofcode/comments/1hcdnk0/2024_day_12_solutions/
+
 
 ## Others
 

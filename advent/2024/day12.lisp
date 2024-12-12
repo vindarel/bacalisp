@@ -5,6 +5,17 @@
 
 (in-package :aoc-2024-12)
 
+;;
+;; Part 1 OK, efficient.
+;;
+;; Part 2 not efficient and ugly with too many globals (hey, it works and allows easy introspection).
+;; Also not efficient because I check too many times that a point is in the points of its region.
+;; I should have stored the region ID in the grid cells.
+;;
+;; Part 2: we parse the grid, collect T when the point has a left/rihgt/…/… border, or NIL,
+;; then we count the consecutive Ts.
+;;
+
 (defparameter *file-input* "input-day12.txt")
 
 (defparameter *input* "AAAA
@@ -135,3 +146,203 @@ MMMISSJEEE")
 #++
 (part-1 (str:from-file *file-input*))
 ;; 1477924 o/
+
+(defparameter *sides* (dict) "id -> integer")
+
+#+to-refactor-with-this
+(defun has-border-p (point move char)
+  (let ((border-char (gethash (move-point point move) *grid*)))
+    (cond
+      ((null border-char)
+       t)
+      ((equal border-char char)
+       nil)
+      (t
+       t))))
+
+;; ;XXX: code repetition.
+
+(defun left-border-p (point char)
+  "This point has no neighbor of the same char at the left."
+  (let ((left-char (gethash (move-point point '(-1 0)) *grid*)))
+    (cond
+      ((null left-char)
+       t)
+      ((equal left-char char)
+       nil)
+      (t
+       t))))
+
+(defun right-border-p (point char)
+  "This point has no neighbor of the same char at the left."
+  (let ((left-char (gethash (move-point point '(1 0)) *grid*)))
+    (cond
+      ((null left-char)
+       t)
+      ((equal left-char char)
+       nil)
+      (t
+       t))))
+
+(defun top-border-p (point char)
+  (let ((top-char (gethash (move-point point '(0 -1)) *grid*)))
+    (cond
+      ((null top-char)
+       t)
+      ((equal top-char char)
+       nil)
+      (t
+       t))))
+
+(defun bottom-border-p (point char)
+  (let ((top-char (gethash (move-point point '(0 1)) *grid*)))
+    (cond
+      ((null top-char)
+       t)
+      ((equal top-char char)
+       nil)
+      (t
+       t))))
+
+(defun collect-top-sides (char points grid regions dimensions &key (fn 'top-border-p))
+  "Walk the grid from Y to X, collect consecutive Ts if the point is a border (as FN dictates)."
+  (declare (ignorable regions))
+  (loop for y from 0 to (second dimensions)
+        nconc (loop for x from 0 to (first dimensions)
+                    for point = (list x y)
+                    for point-char = (gethash point grid)
+                    if (and (find point points :test #'equal) ;; not efficient :S We should have stored the region id in the grid cells. Well, I have the result now. For next time!
+                            (equal char point-char)
+                            (funcall fn point char))
+                      collect t
+                    else
+                      collect nil)))
+
+(defun collect-bottom-sides (char points grid regions dimensions &key (fn 'bottom-border-p))
+  (collect-top-sides char points grid regions dimensions :fn fn))
+
+(defun count-consecutive-sides (list)
+  (loop for elt in list
+        with prev
+        with res = 0
+        if (and (not prev)
+                elt)
+          do (incf res)
+        do (setf prev elt)
+        finally (return res)))
+
+(defun collect-left-sides (char points grid regions dimensions &key (fn 'left-border-p))
+  "Walk the grid from X to Y, collect Ts."
+  (declare (ignorable regions))
+  (loop for x from 0 to (second dimensions)
+        nconc (loop for y from 0 to (first dimensions)
+                    for point = (list x y)
+                    for point-char = (gethash point grid)
+                    if (and (find point points :test #'equal) ;; not efficient :S
+                            (equal char point-char)
+                            (funcall fn point char))
+                      collect t
+                    else
+                      collect nil)))
+
+(defun collect-right-sides (char points grid regions dimensions &key (fn 'right-border-p))
+  (collect-left-sides char points grid regions dimensions :fn fn))
+
+(defun count-intermediary-sides (grid regions dimensions &aux region-char)
+  (setf *sides* (dict))
+  (dohash (region-id points regions)
+    (setf region-char (gethash (first points) grid))
+    (setf (gethash region-id *sides*)
+          (list
+           (count-consecutive-sides
+            (collect-left-sides region-char points grid regions dimensions))
+           (count-consecutive-sides
+            (collect-right-sides region-char points grid regions dimensions))
+           (count-consecutive-sides
+            (collect-top-sides region-char points grid regions dimensions))
+           (count-consecutive-sides
+            (collect-bottom-sides region-char points grid regions dimensions)))))
+
+  *sides*)
+
+(defparameter *all-sides* (dict))
+
+(defun count-all-sides (grid regions dimensions &aux (res (dict)))
+  (let ((sides (count-intermediary-sides grid regions dimensions)))
+    (dohash (region-id ints sides)
+      (setf (gethash region-id res)
+            (reduce #'+ ints))))
+  (setf *all-sides* res))
+
+(defun part-2 (input)
+  (setf *regions* (dict)
+        *areas* (dict)
+        *visited* (dict)
+        )
+  (let* ((dimensions (dimensions input))
+         (total 0))
+    (walk (parse-input input) dimensions)
+
+    ;; I thought about re-drawing the region, finally we use the list of the region' points.
+    ;; (check-all-characters *regions*)
+
+    (count-all-sides *grid* *regions* dimensions)
+
+    (dohash (region-id points *regions*)
+      (incf total (* (gethash region-id *all-sides*)
+                     (gethash region-id *areas*))))
+    total))
+
+
+#++
+(part-2 *input*)
+;; 80
+
+#++
+(part-2 (str:from-file *file-input*))
+;; 841934 o/
+;; not efficient because of checking the points in lists (among others).
+
+(defparameter *input-3* "EEEEE
+EXXXX
+EEEEE
+EXXXX
+EEEEE")
+
+#++
+(part-2 *input-3*)
+;; 236
+
+(defparameter *input-Os-Xs* "OOOOO
+OXOXO
+OOOOO
+OXOXO
+OOOOO")
+
+#++
+(assert (= 436 (part-2 *input-Os-Xs*)))
+
+
+#+not-needed
+(defun check-all-characters (regions &aux res seen)
+  (dohash (id points regions)
+    (let ((char (gethash (first points) *grid*))
+          (other-chars (loop for code from 97 to 122
+                                  collect (code-char code))))
+      (when (find char seen)
+        ;; (format t "seen ~s! " char)
+        (let ((new (pop other-chars)))
+          (loop for point in points
+                do (setf (gethash point *grid*) new)))
+        )
+      (push char res)
+      (push char seen)))
+  res)
+
+#+devel
+(defun all-characters (regions &aux res seen)
+  (dohash (id points regions)
+    (let ((char (gethash (first points) *grid*)))
+      (push char res)
+      (push char seen)))
+  res)

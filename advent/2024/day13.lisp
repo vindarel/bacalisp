@@ -1,8 +1,19 @@
+
+#++
+(ql:quickload "cmu-infix")
+
 (uiop:define-package :aoc-2024-13 (:use :cl
-   :ciel  ;; for the libraries: cl-str (with newer str:paragraphs) and cl-arrows (->)
+   :ciel  ;; for the libraries: cl-str (with newer str:paragraphs) cl-arrows (->)
    ))
 
 (in-package :aoc-2024-13)
+
+;;;
+;;; We use infix math with cmu-cl
+;;; (just take care of operators' precedence now lol)
+;;;
+;;; Very large numbers = double float.
+;;;
 
 (defparameter *file-input* "input-day13.txt")
 
@@ -45,11 +56,11 @@ Prize: X=18641, Y=10279")
 (defun parse-input (input)
   (mapcar #'parse-machine (str:paragraphs input)))
 
-(defun cramer (a1 a2 b1 b2 c1 c2)
-  (let ((x-num (- (* c1 b2)
-                  (* b1 c2)))
-        (y-num (- (* a1 c2)
-                  (* c1 a2)))
+(defun cramer (a1 a2 b1 b2 c1 c2 &key (offset *offset*))
+  (let ((x-num (- (* (+ offset c1) b2)
+                  (* b1 (+ offset) c2)))
+        (y-num (- (* a1 (+ offset c2))
+                  (* (+ offset c1) a2)))
         (den (- (* a1 b2)
                 (* b1 a2))))
     (list
@@ -59,10 +70,12 @@ Prize: X=18641, Y=10279")
 ;; Enable infix math:
 (named-readtables:in-readtable cmu-infix:syntax)
 
+(defparameter *offset* 0)
+
 ;; No dashes in variables names now! :( x-num -> xnum
-(defun look-infix-math (a1 a2 b1 b2 c1 c2)
-  (let ((xnum #I((c1 * b2) - (b1 * c2)))
-        (ynum #I((a1 * c2) - (c1 * a2)))
+(defun look-infix-math (a1 a2 b1 b2 c1 c2 &key (offset *offset*))
+  (let ((xnum #I(( (c1 + offset) * b2) - (b1 * (c2 + offset))))
+        (ynum #I((a1 * (c2 + offset)) - ((c1 + offset) * a2)))
         (den #I((a1 * b2) - (b1 * a2))))
     (list
      #I(xnum / den / 1.0)
@@ -102,3 +115,20 @@ Prize: X=18641, Y=10279")
 #++
 (part-1 (str:from-file *file-input*))
 ;; 30973.0 o/
+
+(defun pretty (nb)
+  (format nil "~f" nb))
+
+(defun part-2 (input)
+  (let ((*offset* 10000000000000d0))  ;; <---------------- d0 = DOUBLE FLOAT
+    (-> input
+      (parse-input)
+      solve-all
+      cost-of-all
+      pretty)))
+
+#++
+(format nil "~f" (part-2 (str:from-file *file-input*)))
+;;  79453750000000 :(
+;; 143768480000000 :( too high
+;;  95688837203288 o/

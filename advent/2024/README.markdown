@@ -106,6 +106,10 @@ My part 02 isn't efficient (easy fix ups).
 
 - https://www.reddit.com/r/adventofcode/comments/1hcdnk0/2024_day_12_solutions/
 
+### day 13 - 2 equations with 2 unknows - Cramer - with infix math
+
+Using cmu-infix for infix math. (no dashes in variable names)
+
 
 ## Others
 

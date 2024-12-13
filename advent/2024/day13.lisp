@@ -56,8 +56,21 @@ Prize: X=18641, Y=10279")
      (/ x-num den 1.0)
      (/ y-num den 1.0))))
 
+;; Enable infix math:
+(named-readtables:in-readtable cmu-infix:syntax)
+
+;; No dashes in variables names now! :( x-num -> xnum
+(defun look-infix-math (a1 a2 b1 b2 c1 c2)
+  (let ((xnum #I((c1 * b2) - (b1 * c2)))
+        (ynum #I((a1 * c2) - (c1 * a2)))
+        (den #I((a1 * b2) - (b1 * a2))))
+    (list
+     #I(xnum / den / 1.0)
+     #I(ynum / den / 1.0))))
+
 (defun solve-machine (data)
-  (apply #'cramer data))
+  ;; (apply #'cramer data))
+  (apply #'look-infix-math data))
 
 (defun solve-all (coords)
   (mapcar #'solve-machine coords))

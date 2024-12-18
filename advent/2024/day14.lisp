@@ -45,16 +45,8 @@ p=9,5 v=-3,-3")
 (defun move (robot)
   (let ((x (+ (px robot) (vx robot)))
         (y (+ (py robot) (vy robot))))
-    (when (minusp x)
-      (incf x (first *dimensions*)))
-    (when (minusp y)
-      (incf y (second *dimensions*)))
-    (when (>= x (first *dimensions*))
-      (decf x (first *dimensions*)))
-    (when (>= y (second *dimensions*))
-      (decf y (second *dimensions*)))
-    (setf (px robot) x
-          (py robot) y))
+    (setf (px robot) (mod x (first *dimensions*)) ;; constrain in bounds. Better than if < 0 or > dimension.
+          (py robot) (mod y (second *dimensions*))))
   robot)
 
 (defparameter *max-seconds* 100)

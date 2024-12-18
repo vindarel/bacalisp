@@ -113,6 +113,32 @@ Using cmu-infix for infix math. (no dashes in variable names)
 Very large numbers -> use double floats.
 
 
+### day 14 - moving robots in a grid - recognizing a pattern
+
+part 1 is simple. We didn't use hash-tables but CLOS objects with defclass-std to use their defclass/std and define-print-object macros.
+
+The grid is pretty printed with an array like so
+
+```
+#2A((1 0 1 2 0 0 0 0 0 0 0)
+    (0 0 0 0 0 0 0 0 0 0 0)
+    (0 0 0 0 0 0 0 0 0 0 0)
+    (0 0 0 0 0 0 1 1 0 1 1)
+    (1 0 1 0 0 0 0 0 0 0 0)
+    (0 0 0 0 0 0 0 0 0 1 0)
+    (0 0 0 0 0 0 0 1 0 0 0))
+```
+
+but just invert the x and y positions.
+
+
+
+others
+
+- https://old.reddit.com/r/adventofcode/comments/1hdvhvu/2024_day_14_solutions/
+- https://www.reddit.com/r/adventofcode/comments/1hegacd/day_14_part_2_common_lisp_human_visual/ - recognizing a trunk, asking if it's a tree.
+
+
 ## Others
 
 - https://github.com/ak-coram/advent

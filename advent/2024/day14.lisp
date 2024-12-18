@@ -49,20 +49,22 @@ p=9,5 v=-3,-3")
           (py robot) (mod y (second *dimensions*))))
   robot)
 
-(defparameter *max-seconds* 100)
+(defparameter *max-seconds* 20000)
 
-#++no-cycles!
-(defun find-cycle (robot)
-  (loop for i from 0
-        with start = (list (px robot) (py robot))
+#++
+(defun find-cycle (robot &key (dimensions *dimensions*))
+  (let ((*dimensions* dimensions))
+    (loop for i from 0 below *max-seconds*
+        with start = (print (list (px robot) (py robot)))
         for pos = (list (px robot) (py robot))
-        when (> i *max-seconds*)
-          return -1
-        when (and (not (zerop i)) (equal pos start))
+        when (and (not (zerop i))
+                  (equal pos start))
           return i
-        do (move robot)
-           ;; (log:info "looking at pos ~s" pos)
-           (incf i)))
+        do (move robot))))
+#++
+(find-cycle (first (parse-input (str:from-file *file-input*))) :dimensions '(101 103))
+;; = 101 * 103
+
 
 (defun move-for (robot n &key show)
   (dotimes (i n)
@@ -72,8 +74,8 @@ p=9,5 v=-3,-3")
       (show (list robot))))
   robot)
 
-(defun move-all-for (robots n)
-  (mapcar (^ (r) (move-for r n)) robots)
+(defun move-all-for (robots n &key show)
+  (mapcar (^ (r) (move-for r n :show show)) robots)
   ;; also
   ;; (mapcar (serapeum:partial #'move-for n) robots)
   ;; when move-for takes N first and then ROBOT.
@@ -108,20 +110,23 @@ p=9,5 v=-3,-3")
                 ;;(log:info "no quadrant for ~a" robot)
                 ))
           finally
-             (print (list q1 q2 q3 q4))
+             ;; (print (list q1 q2 q3 q4))
              (return (* q1 q2 q3 q4)))))
 
 (defun grid ()
   ;; dimensions reversed, to benefit from the default array output.
   (make-array (reverse *dimensions*) :initial-element 0))
 
-(defun show (robots &aux (grid (grid)))
+(defun compute-grid (robots &aux (grid (grid)))
   (dolist (robot robots)
     (incf (aref grid
                 ;; reversed
                 (py robot)
                 (px robot))))
-  (format t "~&~s" grid))
+  grid)
+
+(defun show (robots)
+  (format t "~&~s" (compute-grid robots)))
 
 ;; Shows:
 #|
@@ -147,3 +152,46 @@ p=9,5 v=-3,-3")
 (let ((*dimensions* '(101 103)))
   (part-1 (str:from-file *file-input*)))
 ;; 218433348 o/
+
+;;;
+;;; part 2
+;;;
+;;; Finding the smallest safety factors doesn't work? For me.
+;;;
+;;; Printing all patterns to a file and finding ################### works^^
+;;;
+
+(defparameter *grids* (list))
+
+(defun find-smallest-safety-factors (&key (n 10))
+  ;; We then print the grid… no more clues.
+  (let ((robots (parse-input (str:from-file *file-input*)))
+        ;; (safety-factors (list))
+        (*dimensions* '(101 103)))
+    (setf *grids* (list))
+    (with-open-file (f "grids.txt" :direction :output :if-exists :supersede)
+      (dotimes (i 10500)
+        (move-all-for robots 1)
+        ;; (push (list i (count-quadrants robots)) safety-factors)
+        ;; (push (compute-grid robots) *grids*)
+        (format f "~&~%pattern n°~a ------------------~&" (1+ i))
+        (print-grid (compute-grid robots) :stream f))
+      )
+    ;; (serapeum:take n (sort safety-factors #'< :key #'second))
+    ))
+
+;; 6511 :(
+;; 6512 :)
+
+(defun print-those-grids-to-file (pairs)
+  (with-open-file (f "grids.txt" :direction :output :if-exists :supersede)
+    (dolist (pair pairs)
+      (print-grid (nth (first pair) *grids*)))))
+
+(defun print-grid (grid &key (dimensions '(101 103)) (stream t))
+  (dotimes (j  (second dimensions))
+    (dotimes (i (first dimensions))
+      (if (plusp (aref grid j i))
+          (format stream "#")
+          (format stream " ")))
+    (format stream "~a" #\Newline)))

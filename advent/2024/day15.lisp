@@ -80,7 +80,7 @@ v^^>>><<^^<>>^v^<v^vv<>v^<<>^<^v^v><^<<<><<^<v><v<>vv>>v><v^<vv<>v^<<^")
   (with-slots (point) robot
     (setf *robot* point)))
 
-(define-print-object/std cell)  ;; ne marche pas pour wall box etc ?? O_o
+(define-print-object/std cell)
 
 (defun parse-map (s)
   (setf *map* (dict))

@@ -2,7 +2,8 @@
   (:use :cl
    :ciel  ;; for the libraries: cl-str, ppcre, alexandria (hash-table-values) and the ^ lambda shortcut.
    :defclass-std  ;; the one on lisp-maintainers, to have define-print-object/std
-   :documentation "In this puzzle I used CLOS, to use the newly
+        )
+  (:documentation "In this puzzle I used CLOS, to use the newly
    augmented DEFCLASS-STD shortcut. Using CLOS doesn't give much
    benefits for AOC or at least this puzzle IMO. We surely can have
    terser code by using a DICT or a simple data structure.

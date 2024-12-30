@@ -139,6 +139,9 @@ others
 - https://www.reddit.com/r/adventofcode/comments/1hegacd/day_14_part_2_common_lisp_human_visual/ - recognizing a trunk, asking if it's a tree.
 - part 2 strategies https://www.reddit.com/r/adventofcode/comments/1he0g67/2024_day_14_part_2_the_clue_was_in_part_1/
 
+### day 15 - moving boxes
+
+I used a class definition shortcut, defclass-std. OK, but hash-tables would have been enough and tersier.
 
 ## Others
 

@@ -3,24 +3,30 @@
 ;;;; - télécharger https://github.com/ciel-lang/CIEL/
 ;;;; - mettre les fichiers .csv à côté du programme et le lancer:
 ;;;;
-;;;; ./ciel Rapports*
+;;;; Run this script on many CSV files:
+;;;;
+;;;; $ ciel sumuputils.lisp Rapports*
 ;;;;
 ;;;;
 
 (in-package :ciel-user)
 
-(ql:quickload "data-table"  :silent t)
+;; Needs the latest CIEL, or this library.
+;; (ql:quickload "data-table"  :silent t)
 
 ;;; Download the CSV file from Sum Up
+(defvar *file*  #p"/path/to/Rapport-ventes-2024-11-01_2024-11-30.csv"
+  "Only for testing.")
 
-(defvar *file*  "/path/to/Rapport-ventes-2024-11-01_2024-11-30.csv")
-
-(defvar *DT* nil)
+(defvar *dt* nil "devel only")
 
 (defun parse-csv (file)
-  "Parse CSV, return a data-table object with column names and rows."
-  (let ((rows (csv:read-csv (str:from-file file))))
-    (make-instance 'data-table:data-table :column-names (first rows) :rows (rest rows))))
+  "Parse CSV, return a data-table object with column names and rows.
+
+  file: a pathname (not just a string)."
+  ;; This takes headers as the first row
+  ;; and guesses the columns' types (string, int, float).
+  (csv:get-data-table-from-csv (pathname file)))
 
 (defun get-all-days (dt)
   (remove-duplicates
@@ -61,7 +67,10 @@
   (loop for row in (rows-offerts-for-day day dt)
         for qty = (data-table:data-table-value dt :row row :col-name "Quantité")
         when qty
-          sum (parse-integer qty)))
+          sum qty))
+
+;; (sum-quantities-offerts-for-day "23 nov" *dt*)
+;; 15
 
 (defun sum-quantities-offerts-for-day/by-type (day dt desc)
   ;; optionnel: pour chq jour, combien de tartines, alcool, soft… d'offerts? (en nombre)
@@ -69,10 +78,7 @@
         for qty = (data-table:data-table-value dt :row row :col-name "Quantité")
         when (and qty
                   (str:containsp desc (data-table:data-table-value dt :row row :col-name "Description")))
-          sum (parse-integer qty)))
-
-;; (sum-quantities-offerts-for-day "23 nov")
-;; 15
+          sum qty))
 
 (defun report-sum-quantities-offerts-for-day/by-type (file &key (stream t) &aux dt)
   (setf dt (parse-csv file))
@@ -89,17 +95,17 @@
   (loop for row in (rows-offerts-for-day day dt)
         for qty = (data-table:data-table-value dt :row row :col-name "Prix (TTC)")
         when qty
-          sum (parse-float qty)))
+          sum qty))
 
-;; (sum-total-offerts-for-day "23 nov")
-;; 49
+;; (sum-total-offerts-for-day "23 nov" *dt*)
+;; 49.0d0
 
 (defun report-totals-offert-for-days (file &key (stream t))
   (let ((dt (parse-csv file)))
     (format stream "~&~%Total TTC des offerts~&~%")
     (format stream "~&(somme des colonnes Prix (TTC) pour toutes les lignes du jour comportant 'conso offerte')~&")
     (loop for day in (get-all-days dt)
-         do (format stream "~20a: ~4a~&" day (sum-total-offerts-for-day day dt)))))
+         do (format stream "~20a: ~4f~&" day (sum-total-offerts-for-day day dt)))))
 
 (defun report-number-offert-for-days (file &key (stream t))
   (let ((dt (parse-csv file)))
@@ -109,7 +115,6 @@
          do (format stream "~20a: ~4a~&" day (sum-quantities-offerts-for-day day dt)))))
 
 #+ciel
-(progn
-  (mapcar #'report-totals-offert-for-days (rest ciel-user:*script-args*))
-  (mapcar #'report-sum-quantities-offerts-for-day/by-type (rest ciel-user:*script-args*))
-)
+(let ((files (mapcar #'pathname (rest ciel-user:*script-args*))))
+  (mapcar #'report-totals-offert-for-days files)
+  (mapcar #'report-sum-quantities-offerts-for-day/by-type files))

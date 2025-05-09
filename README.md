@@ -38,3 +38,6 @@ access all cells by row and column name (instead of by position).
 redditors also mentioned that
 [cl-duckdb](https://github.com/ak-coram/cl-duckdb) is useful and
 pretty fast at parsing.
+
+- https://dev.to/vindarel/read-csv-files-in-common-lisp-cl-csv-data-table-3c9n
+- lisp-stat is awesome for CSV manipulation too: https://lisp-stat.dev/docs/manuals/data-frame/

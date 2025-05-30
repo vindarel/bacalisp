@@ -28,12 +28,18 @@
   ;; and guesses the columns' types (string, int, float).
   (csv:get-data-table-from-csv (pathname file)))
 
+(defun get-day (s)
+  (str:unwords
+   (split-sequence #\Space s :count 3)))
+
+#++
+(get-day "5 nov. 2024 19:00 etc")
+
 (defun get-all-days (dt)
   (remove-duplicates
    (loop for row in (data-table:rows dt)
          for date/time = (data-table:data-table-value dt :row row :col-name "Date")
-         for day = (str:unwords
-                    (split-sequence #\Space date/time :count 3))
+         for day = (get-day date/time)
          collect day)
    :test #'equal))
 
@@ -58,9 +64,28 @@
 (defun rows-offerts-for-day (day dt)
   "day: string, like '23 nov"
   (loop for row in (data-table:rows dt)
-        when (and (str:containsp day (data-table:data-table-value dt :row row :col-name "Date"))
+        for date/time = (data-table:data-table-value dt :row row :col-name "Date")
+        for row-day = (get-day date/time)
+        when (and (equal day row-day)
                   (str:containsp "offert" (data-table:data-table-value dt :row row :col-name "Description")))
           collect row))
+
+;; 8 nov != 28 nov ;)
+#++
+(assert (null
+         (rows-offerts-for-day "8 nov. 2024" *dt*)
+         ))
+#++
+(assert
+ (rows-offerts-for-day "28 nov. 2024" *dt*)
+ )
+
+#++
+(assert (not (equal
+              (rows-offerts-for-day "8 nov. 2024" *dt*)
+              (rows-offerts-for-day "28 nov. 2024" *dt*))))
+
+
 
 (defun sum-quantities-offerts-for-day (day dt)
   ;; optionnel: pour chq jour, combien de tartines, alcool, soft… d'offerts? (en nombre)
@@ -91,6 +116,7 @@
 
 
 (defun sum-total-offerts-for-day (day dt)
+  "day: string (5 nov.)"
   ;; le + important
   (loop for row in (rows-offerts-for-day day dt)
         for qty = (data-table:data-table-value dt :row row :col-name "Prix (TTC)")

@@ -1,0 +1,216 @@
+Date,Type,Réf. transaction,Moyen de paiement,Quantité,Description,Devise,Prix avant réduction,Réduction,Prix (TTC),Prix (HT),TVA,Taux de TVA,Compte
+1 déc. 2024 15:36,Vente,ASV2CLZN,Espèces,1,Soft Cafe,EUR,1.00,0.00,1.00,1.00,0.00,,us@gmail.com
+1 déc. 2024 15:36,Vente,ASV2CLZN,Espèces,1,Soft Thé/tisane,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+1 déc. 2024 15:37,Vente,ASV2C3AG,Espèces,3,Alcool Bière blonde,EUR,9.00,0.00,9.00,9.00,0.00,,us@gmail.com
+1 déc. 2024 15:37,Vente,ASV2C3AG,Espèces,2,Sirops,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 15:50,Vente,TFK93HSRZS,Visa - Débit,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 15:50,Vente,TFK93HSRZS,Visa - Débit,1,Soft Jus de fruits,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+1 déc. 2024 15:53,Vente,TFN9P9TZQP,Visa - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 15:58,Vente,ASV2PZZZ,Espèces,1,Soft Thé/tisane,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+1 déc. 2024 16:00,Vente,ASV2QZC2,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 16:01,Vente,ASV2RPM2,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 16:01,Vente,ASV2RRCA,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 16:02,Vente,ASV2RTDG,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 16:16,Vente,ASV2ZMAP,Espèces,1,Alcool Vin Blanc,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 16:21,Vente,TCHALHTLZV,Mastercard - Débit,2,Alcool Vin Blanc,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+1 déc. 2024 16:30,Vente,ASV29PXT,Espèces,1,Alcool Vin rouge,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 16:33,Vente,ASV3AZZF,Espèces,1,Alcool Vin Blanc,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 16:44,Vente,TXXKFNL2MF,Visa - Débit,2,Soft Jus de fruits,EUR,4.00,0.00,4.00,4.00,0.00,,us@gmail.com
+1 déc. 2024 16:46,Vente,TEKC23Q2F4,Visa - Débit,2,Alcool Biere ambre,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+1 déc. 2024 16:50,Vente,ASV3H62Z,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 16:50,Vente,ASV3H62Z,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 17:04,Vente,ASV3QYNE,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 17:10,Vente,ASV3S7BX,Espèces,3,Alcool Biere ambre,EUR,9.00,0.00,9.00,9.00,0.00,,us@gmail.com
+1 déc. 2024 17:27,Vente,TC9H2Z6F66,Visa - Débit,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 17:35,Vente,ASV347MY,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 17:54,Vente,ASV4DM7H,Espèces,2,Alcool Vin rouge,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+1 déc. 2024 18:21,Vente,ASV4NYZM,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 18:21,Vente,ASV4NYZM,Espèces,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+1 déc. 2024 18:21,Vente,ASV4NYZM,Espèces,3,Alcool Vin rouge,EUR,9.00,0.00,9.00,9.00,0.00,,us@gmail.com
+1 déc. 2024 18:21,Vente,ASV4NYZM,Espèces,1,Soft Thé/tisane,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+1 déc. 2024 18:22,Vente,TEEQ7PDH72,Visa - Débit,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 18:22,Vente,TEEQ7PDH72,Visa - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 18:25,Vente,ASV4PT2U,Espèces,2,Alcool Vin rouge,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+1 déc. 2024 19:47,Vente,ASV6FG6U,Espèces,1,Alcool Vin rouge,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 19:54,Vente,ASV6GZGP,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+1 déc. 2024 19:54,Vente,ASV6GZGP,Espèces,1,Soft Jus de fruits,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+4 déc. 2024 18:15,Vente,TE2FZNX3RY,Mastercard - Débit,1,Montant personnalisé,EUR,20.00,0.00,20.00,20.00,0.00,,us@gmail.com
+4 déc. 2024 18:16,Refund,TE2FZNX3RY,Mastercard - Débit,1,,EUR,-20.00,,-20.00,,,,us@gmail.com
+5 déc. 2024 18:38,Vente,ASYDE9TD,Espèces,2,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+5 déc. 2024 18:54,Vente,ASYDMA97,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 19:22,Vente,TE9CQAFHGL,Visa - Débit,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 19:24,Vente,ASYDXZMG,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 19:48,Vente,TCEPL2PRQ4,Visa - Débit,4,Alcool Bière blonde,EUR,12.00,0.00,12.00,12.00,0.00,,us@gmail.com
+5 déc. 2024 20:00,Vente,ASYEDBFY,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:08,Vente,ASYEFNXV,Espèces,1,Conso offerte (a enregistrer en espèce) Soft,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+5 déc. 2024 20:12,Vente,ASYEGTMA,Espèces,1,Sirops,EUR,1.50,0.00,1.50,1.50,0.00,,us@gmail.com
+5 déc. 2024 20:13,Vente,ASYEG6UG,Espèces,1,Alcool Vin rouge,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:17,Vente,ASYEKHDX,Espèces,1,Soft Jus de fruits,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+5 déc. 2024 20:21,Vente,ASYELG2N,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:26,Vente,TFPTMUSRQP,Visa - Débit,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:26,Vente,TFPTMUSRQP,Visa - Débit,1,Alcool Vin Blanc,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:26,Vente,TFPTMUSRQP,Visa - Débit,1,Alcool Vin rouge,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:27,Vente,ASYEMYGT,Espèces,1,Tartine 6€,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+5 déc. 2024 20:30,Vente,TEGAXTN74H,Mastercard - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:35,Vente,TFLVCXY9VN,Visa - Débit,1,Alcool Vin rouge,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:37,Vente,ASYEQRE9,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:38,Vente,ASYEQYHV,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:38,Vente,TE7MPPZHRZ,Visa - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:39,Vente,ASYERDGR,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:41,Vente,ASYERVDC,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:44,Vente,TD4P9ATA4Z,Visa - Débit,1,Soft Jus de fruits,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+5 déc. 2024 20:46,Vente,ASYES3VQ,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:47,Vente,ASYETA7X,Espèces,1,Alcool Vin Blanc,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:47,Vente,ASYETA7X,Espèces,1,Soft Jus de fruits,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+5 déc. 2024 20:49,Vente,ASYETRT3,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:57,Vente,TDELH6ST9M,Visa - Débit,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 20:58,Vente,ASYEXAP7,Espèces,1,Conso offerte (a enregistrer en espèce) Soft,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+5 déc. 2024 21:02,Vente,TE49PKTYH9,Mastercard - Débit,1,Soft Thé/tisane,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+5 déc. 2024 21:03,Vente,ASYEYEDN,Espèces,2,Alcool Biere ambre,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+5 déc. 2024 21:07,Vente,TEUL6MGS99,Mastercard - Débit,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+5 déc. 2024 21:07,Vente,TEUL6MGS99,Mastercard - Débit,1,Soft Thé/tisane,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+5 déc. 2024 21:08,Vente,TGTFXSGPK3,Mastercard - Débit,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+5 déc. 2024 21:09,Vente,ASYEZSLL,Espèces,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+5 déc. 2024 21:10,Vente,ASYEZ3PC,Espèces,2,Alcool Vin rouge,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+5 déc. 2024 21:12,Vente,TCZXRTLPTM,Visa - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 21:12,Vente,TCZXRTLPTM,Visa - Débit,1,Alcool Vin Blanc,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 21:14,Vente,ASYE2ZY4,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 21:14,Vente,ASYE24LZ,Espèces,4,Alcool Biere ambre,EUR,12.00,0.00,12.00,12.00,0.00,,us@gmail.com
+5 déc. 2024 21:20,Vente,ASYE4KGQ,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 21:20,Vente,ASYE4KGQ,Espèces,1,Alcool Vin rouge,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 21:20,Vente,ASYE4LRS,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 21:21,Vente,ASYE4QFV,Espèces,2,Alcool Biere ambre,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+5 déc. 2024 21:21,Vente,ASYE4QFV,Espèces,1,Sirops,EUR,1.50,0.00,1.50,1.50,0.00,,us@gmail.com
+5 déc. 2024 21:22,Vente,ASYE4UYR,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 21:23,Vente,TDEM6C3PUZ,Mastercard - Débit,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 21:23,Vente,TDEM6C3PUZ,Mastercard - Débit,1,Alcool Vin rouge,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 21:23,Vente,TDEM6C3PUZ,Mastercard - Débit,1,Soft Jus de fruits,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+5 déc. 2024 21:26,Vente,ASYE6YKB,Espèces,1,Soft Jus de fruits,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+5 déc. 2024 21:36,Vente,TEZF3NVVMR,Mastercard - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 21:43,Vente,ASYFBU3F,Espèces,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+5 déc. 2024 21:46,Vente,ASYFCKNB,Espèces,2,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+5 déc. 2024 21:50,Vente,ASYFDE2V,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 21:52,Vente,ASYFDUP3,Espèces,4,Alcool Bière blonde,EUR,12.00,0.00,12.00,12.00,0.00,,us@gmail.com
+5 déc. 2024 21:55,Vente,ASYFEGEZ,Espèces,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+5 déc. 2024 21:55,Vente,ASYFEGEZ,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 21:59,Vente,ASYFFCAK,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 22:06,Vente,ASYFGV2F,Espèces,1,Alcool Vin rouge,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 22:08,Vente,TEXTYF4HMN,Visa - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 22:09,Vente,TFFS6ZCMMM,Visa - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 22:09,Vente,TFFS6ZCMMM,Visa - Débit,1,Alcool Vin Blanc,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 22:18,Vente,TDKFAR4NAH,Visa - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 22:33,Vente,TEVZ4ZUYA9,Visa - Débit,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 22:34,Vente,TEPE2EZYRY,Visa - Débit,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 22:35,Vente,ASYFPP3G,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 22:36,Vente,ASYFPRH9,Espèces,3,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,9.00,0.00,9.00,9.00,0.00,,us@gmail.com
+5 déc. 2024 22:39,Vente,TC3AG6TNZD,Visa - Débit,2,Alcool Biere ambre,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+5 déc. 2024 22:39,Vente,TC3AG6TNZD,Visa - Débit,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+5 déc. 2024 22:40,Vente,ASYFQK4Q,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 22:40,Vente,ASYFQK4Q,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 22:41,Vente,ASYFQSGQ,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 22:43,Vente,TD7CFA9YE9,Visa - Débit,1,Soft Jus de fruits,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+5 déc. 2024 22:44,Vente,ASYFQ9XF,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 22:45,Vente,ASYFRE2T,Espèces,1,Conso offerte (a enregistrer en espèce) Soft,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+5 déc. 2024 22:46,Vente,TCTTFCKNX7,Mastercard - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 22:47,Vente,ASYFRRSH,Espèces,1,Soft Jus de fruits,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+5 déc. 2024 22:54,Vente,TDZT3ZNDC4,Mastercard - Débit,4,Alcool Bière blonde,EUR,12.00,0.00,12.00,12.00,0.00,,us@gmail.com
+5 déc. 2024 23:03,Vente,ASYFUM7V,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+5 déc. 2024 23:18,Vente,ASYFX4CU,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 20:22,Vente,ASYTBD63,Espèces,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+6 déc. 2024 20:22,Vente,ASYTBD63,Espèces,2,Tartine 6€,EUR,12.00,0.00,12.00,12.00,0.00,,us@gmail.com
+6 déc. 2024 20:24,Vente,ASYTB7AB,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 20:35,Vente,TCGFC7H2RF,Visa - Débit,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+6 déc. 2024 20:37,Vente,TDR6PAL6Z4,Visa - Débit,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 20:39,Vente,ASYTH6YM,Espèces,4,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,12.00,0.00,12.00,12.00,0.00,,us@gmail.com
+6 déc. 2024 20:51,Vente,ASYTPXEE,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 20:54,Vente,ASYTQTXQ,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 20:58,Vente,ASYTSGLN,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 21:33,Vente,ASYT9SUT,Espèces,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+6 déc. 2024 21:35,Vente,ASYUAD7S,Espèces,4,Alcool Bière blonde,EUR,12.00,0.00,12.00,12.00,0.00,,us@gmail.com
+6 déc. 2024 21:54,Vente,ASYUGQMR,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 21:55,Vente,ASYUHDNR,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 21:57,Vente,ASYUHYDZ,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 21:59,Vente,ASYUKGAX,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 21:59,Vente,ASYUKGAX,Espèces,1,Alcool Vin Blanc,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 21:59,Vente,ASYUKL3Z,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 22:00,Vente,ASYUKY6T,Espèces,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+6 déc. 2024 22:01,Vente,ASYULA4T,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 22:05,Vente,TFA2UG966C,Visa - Débit,1,Tartine 6€,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+6 déc. 2024 22:06,Vente,TDEVCKGYDN,Visa - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 22:06,Vente,TDEVCKGYDN,Visa - Débit,1,Tartine 6€,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+6 déc. 2024 22:12,Vente,ASYUPFRT,Espèces,1,Sirops,EUR,1.50,0.00,1.50,1.50,0.00,,us@gmail.com
+6 déc. 2024 22:12,Vente,ASYUPFRT,Espèces,1,Tartine 6€,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+6 déc. 2024 22:25,Vente,ASYUS7VG,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 22:28,Vente,TDDLUEQQ9F,Visa - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+6 déc. 2024 22:28,Vente,TDDLUEQQ9F,Visa - Débit,1,Alcool Vin Blanc,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 20:00,Vente,AS2ZUL27,Espèces,4,Conso offerte (a enregistrer en espèce) Tartine,EUR,24.00,0.00,24.00,24.00,0.00,,us@gmail.com
+12 déc. 2024 20:00,Vente,AS2ZUM6S,Espèces,4,Conso offerte (a enregistrer en espèce) Tartine,EUR,24.00,0.00,24.00,24.00,0.00,,us@gmail.com
+12 déc. 2024 20:01,Vente,AS2ZURQ9,Espèces,4,Conso offerte (a enregistrer en espèce) Tartine,EUR,24.00,0.00,24.00,24.00,0.00,,us@gmail.com
+12 déc. 2024 20:01,Vente,AS2ZUX74,Espèces,4,Conso offerte (a enregistrer en espèce) Tartine,EUR,24.00,0.00,24.00,24.00,0.00,,us@gmail.com
+12 déc. 2024 20:02,Vente,AS2ZVALX,Espèces,4,Conso offerte (a enregistrer en espèce) Tartine,EUR,24.00,0.00,24.00,24.00,0.00,,us@gmail.com
+12 déc. 2024 20:20,Vente,AS2Z3FYU,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 20:22,Vente,AS2Z4A2U,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 20:27,Vente,AS2Z6P6A,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 20:29,Vente,AS2Z64FH,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 20:37,Vente,AS22AKB6,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 20:38,Vente,AS22AS6T,Espèces,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 20:39,Vente,AS22AVMM,Espèces,2,Alcool Biere ambre,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 20:39,Vente,AS22AZSL,Espèces,2,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 20:40,Vente,AS22A4KU,Espèces,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 20:40,Vente,AS22A4KU,Espèces,1,Alcool Vin rouge,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 20:41,Vente,TRUAAQRAQF,Mastercard - Débit,2,Soft Jus de fruits,EUR,4.00,0.00,4.00,4.00,0.00,,us@gmail.com
+12 déc. 2024 20:42,Vente,AS22BQ9H,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 20:48,Vente,AS22DG7L,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 20:50,Vente,AS22DXY7,Espèces,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 20:52,Vente,AS22ELVA,Espèces,2,Alcool Biere ambre,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 20:52,Vente,AS22ELVA,Espèces,1,Sirops,EUR,1.50,0.00,1.50,1.50,0.00,,us@gmail.com
+12 déc. 2024 20:54,Vente,TDP26TPUL2,Visa - Débit,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 20:56,Vente,TEXL7GHG99,Mastercard - Débit,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 21:00,Vente,AS22GPTX,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:02,Vente,AS22GVAR,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:02,Vente,AS22G26D,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:03,Vente,TFH4EPHHPG,Mastercard - Débit,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 21:04,Vente,AS22HGQU,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:04,Vente,AS22HMPZ,Espèces,1,Conso offerte (a enregistrer en espèce) Tartine,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 21:05,Vente,AS22HTUM,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:07,Vente,AS22KDSK,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:16,Vente,AS22ME6K,Espèces,1,Alcool Vin Blanc,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:18,Vente,AS22MU3D,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:19,Vente,AS22M9S2,Espèces,1,Tartine 6€,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 21:22,Vente,AS22NZSB,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:27,Vente,TCFEYV9QRC,Visa - Débit,2,Alcool Biere ambre,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 21:27,Vente,TCFEYV9QRC,Visa - Débit,1,Alcool Vin Blanc,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:27,Vente,TCFEYV9QRC,Visa - Débit,1,Tartine 6€,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 21:28,Vente,TFFMEZGK4M,Visa - Crédit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:29,Vente,AS22QMPA,Espèces,1,Alcool Vin rouge,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:34,Vente,AS22RQFQ,Espèces,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 21:35,Vente,AS22R3FV,Espèces,2,Alcool Biere ambre,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 21:37,Vente,AS22SG44,Espèces,1,Alcool Vin rouge,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:42,Vente,TCZND7YGRH,Mastercard - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:46,Vente,AS22UN92,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:50,Vente,AS22VGF6,Espèces,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:51,Vente,TCE3NETPEP,Visa - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 21:52,Vente,TSPSKGCX9C,Visa - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:00,Vente,AS22YRP9,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:00,Vente,AS22YR3K,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:01,Vente,AS22YTKX,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:01,Vente,AS22YYFN,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:02,Vente,AS22Y43C,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:02,Vente,AS22Y77T,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:03,Vente,TDRYYMLFAG,Visa - Débit,2,Alcool Biere ambre,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 22:03,Vente,TDRYYMLFAG,Visa - Débit,1,Alcool Vin Blanc,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:04,Vente,AS22ZGY2,Espèces,1,Alcool Vin rouge,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:06,Vente,AS22ZVXN,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:06,Vente,AS22ZVXN,Espèces,1,Conso offerte (a enregistrer en espèce) Soft,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+12 déc. 2024 22:10,Vente,TD6NLKXYNU,Mastercard - Débit,2,Alcool Bière blonde,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 22:13,Vente,TEAC93LHC2,Mastercard - Débit,1,Alcool Biere ambre,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:13,Vente,TEAC93LHC2,Mastercard - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:18,Vente,AS224L2B,Espèces,1,Alcool Vin rouge,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:19,Vente,AS224PA2,Espèces,1,Alcool Vin Blanc,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:23,Vente,AS226MLV,Espèces,1,Alcool Vin rouge,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:30,Vente,AS227UNF,Espèces,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:34,Vente,T4R96SEFU6,Visa - Débit,1,Alcool Bière blonde,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:39,Vente,AS23AMXY,Espèces,1,Conso offerte (a enregistrer en espèce) Tartine,EUR,6.00,0.00,6.00,6.00,0.00,,us@gmail.com
+12 déc. 2024 22:40,Vente,AS23ASKX,Espèces,1,Conso offerte (a enregistrer en espèce) Soft,EUR,2.00,0.00,2.00,2.00,0.00,,us@gmail.com
+12 déc. 2024 22:41,Vente,AS23A39R,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com
+12 déc. 2024 22:42,Vente,AS23A6AM,Espèces,1,Conso offerte (a enregistrer en espèce) Biere/vin,EUR,3.00,0.00,3.00,3.00,0.00,,us@gmail.com

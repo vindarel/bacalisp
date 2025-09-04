@@ -3,6 +3,7 @@ Training, experiments.
 
 More CL code on Github \o/
 
+## stuff
 
 - comby-refactoring.md: trying https://comby.dev/ as found by https://github.com/svetlyak40wt/comby-test
 
@@ -10,7 +11,12 @@ More CL code on Github \o/
 
 - `issr-test`: testing http://cjackson.tk/todo-tutorial
 
+
+## local-time (minor)
+
 - `local-time.lisp`: simple additions useful for me that won't be merged upstream.
+
+## CSV
 
 - CSV parsing and manipulation with cl-csv and its companion [data-table](https://github.com/AccelerationNet/data-table/).
 
@@ -41,3 +47,12 @@ pretty fast at parsing.
 
 - https://dev.to/vindarel/read-csv-files-in-common-lisp-cl-csv-data-table-3c9n
 - lisp-stat is awesome for CSV manipulation too: https://lisp-stat.dev/docs/manuals/data-frame/
+
+## read passwords in terminal
+
+in `read-password.lisp`: run `/bin/stty -echo` before `(read-line)`.
+
+```txt
+password: *****
+I still know the pass was "secret"
+```

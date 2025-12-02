@@ -123,6 +123,6 @@ L82")
         finally (return nb-of-zeros)))
 
 #+ciel
-(part2 (str:from-file "day01.txt"))
+(format t "day part2: ~a~&" (part2 (str:from-file "day01.txt")))
 ;; 5872
 ;; o/

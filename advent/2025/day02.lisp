@@ -5,7 +5,8 @@
           ;; CIEL also makes it easy to run a .lisp file as a script from the terminal
           ;; (with simpler CLI args, and all CIEL libraries baked in, so fast start-up times.
           ;; See below.)
-     ))
+          )
+  (:documentation: "Simple solution by looking up all strings."))
 
 (in-package :aoc-2025-02)
 
@@ -40,13 +41,12 @@
 
 
 ;; (--> find-invalid-ids (string) (or null cons))
-(defun find-invalid-ids (range &aux start end len-end (res (list)))
+(defun find-invalid-ids (range &aux start end (res (list)))
   "range: string-string"
   (check-type range string)
   (let ((ab (str:split "-" range)))
     (setf start (first ab))
-    (setf end (second ab))
-    (setf len-end (length end)))
+    (setf end (second ab)))
 
   (when (simple-invalid-id start)
       ;; simple case like "11"
@@ -148,3 +148,11 @@
 ;; 45814076230 o/
 ;; but
 ;; in ±20s. Stupid CPU power to the air lol.
+
+;; From others:
+;; regexp: all you need is ^(\d+)\1$
+;;
+;; generate possible numbers yourself instead of testing them all.
+;;
+;;  I am finding patterns by repeatedly dividing and checking the remainder of the number:
+;;    - however… 010 will be seen as 10 and as a valid pattern ?

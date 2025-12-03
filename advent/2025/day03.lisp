@@ -7,7 +7,8 @@
           ;; See below.)
           ;; http://ciel-lang.org/
           )
-  (:documentation ""))
+  (:documentation "To get 78 out of 234234234234278, we search the biggest number from all the string but one last element, to ensure we get a second unit.
+   We remember the index of this first biggest number, and we take the biggest from the rest of the string."))
 
 (in-package :aoc-2025-03)
 
@@ -77,3 +78,4 @@
 #+ciel
 (format t "~&day03: ~a" (part2 (str:from-file "day03.txt")))
 ;; 171297349921310 o/
+;; in 10ms

@@ -6,7 +6,7 @@
           ;; (with simpler CLI args, and all CIEL libraries baked in, so fast start-up times.
           ;; See below.)
           )
-  (:documentation: "Simple solution by looking up all strings."))
+  (:documentation "Simple solution by looking up all strings."))
 
 (in-package :aoc-2025-02)
 

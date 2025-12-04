@@ -103,20 +103,22 @@
     ;; Move the roll of paper, clear the *grid* position.
     (setf (gethash position *grid*) :space)
 
-    ;; return count as before.
+    ;; return as before.
     (values t count)))
 
-(defun count-accessible-papers/part2 (&optional (grid *grid*))
-  (loop for pos being the hash-key of grid
+(defun count-accessible-papers/part2 ()
+  (loop for pos being the hash-key of *grid*
         count (less-than-4-adjacent-papers/part2 pos)))
 
 (defun part2 (input)
   (let ((*grid* (parse-input input)))
-    (loop for count-step = (count-accessible-papers/part2)
-          when (plusp count-step)
-            sum count-step into total
-          when (zerop count-step)
-            return total)))
+    (time
+     (loop for count-step = (count-accessible-papers/part2)
+           when (plusp count-step)
+             sum count-step into total
+           when (zerop count-step)
+             return total)))
+  )
 
 #+ciel
 (print (part2 (str:from-file "day04.txt")))
@@ -125,3 +127,54 @@
 ;; in 170ms
 ;;
 ;; thank you creator for not putting too many hedge cases today and let us feel empowered 🤝
+
+
+;; wait… parse the file before?
+;; we only gain ±10ms
+;;
+;; what about type declarations?
+;; with this… little change.
+;; I think the inline declarations gain us ±20ms again.
+;; I get 140ms now.
+
+(declaim (inline less-than-4-adjacent-papers/part2))
+(defun less-than-4-adjacent-papers/part2 (position)
+  "Let's use a top-level *grid* variable,
+  and modify it."
+  (declare (inline less-than-4-adjacent-papers/part2))
+  (declare (optimize (speed 3) (safety 0)))
+  (when (equal :space (gethash position *grid*))
+    (return-from less-than-4-adjacent-papers/part2 nil))
+  (let ((count 0))
+    (declare (type (integer 0 4) count))
+    (dolist (pos (height-locations position))
+      (when (equal :paper (gethash pos *grid*))
+        (incf count))
+      (when (= count 4)
+        (return-from less-than-4-adjacent-papers/part2 nil)))
+
+    ;; Move the roll of paper, clear the *grid* position.
+    (setf (gethash position *grid*) :space)
+
+    ;; return as before.
+    (values t count)))
+
+(declaim (ftype (function () fixnum)
+                 count-accessible-papers/part2))
+(declaim (inline count-accessible-papers/part2))
+(defun count-accessible-papers/part2 ()
+  (declare (inline count-accessible-papers/part2))
+  (declare (optimize (speed 3) (safety 0)))
+  (loop for pos being the hash-key of *grid*
+        count (less-than-4-adjacent-papers/part2 pos)))
+
+(defun part2 (input)
+  (declare (optimize (speed 3) (safety 0)))
+  (let ((*grid* (parse-input input)))
+    (time
+     (loop for count-step fixnum = (count-accessible-papers/part2)
+           when (plusp count-step)
+             sum count-step into total fixnum
+           when (zerop count-step)
+             return total)))
+  )

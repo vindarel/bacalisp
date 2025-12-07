@@ -62,3 +62,10 @@ Part one gets as simple as: (/u/nohillside)
 
 > Approach: rotate the whole input, then handle as if it were given as lisp data.
 > "I played with conditions to handle numbers vs operator."
+
+## day 07
+
+- https://www.reddit.com/r/adventofcode/comments/1pg9w66/2025_day_7_solutions/nst38vh/
+- https://www.reddit.com/r/adventofcode/comments/1pg9w66/2025_day_7_solutions/nsqrve4/
+- https://www.reddit.com/r/adventofcode/comments/1pg9w66/2025_day_7_solutions/nsqn3jd/
+- https://www.reddit.com/r/adventofcode/comments/1pg9w66/2025_day_7_solutions/nsqn3jd/

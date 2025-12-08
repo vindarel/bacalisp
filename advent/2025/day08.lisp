@@ -158,7 +158,6 @@
                                                       *clusters*))))
                (log:warn "the end with " points)
                (return-from group-pairs (reduce #'* points :key #'point-x)))
-
           )
     *clusters*))
 
@@ -188,6 +187,8 @@
 ;; todo:
 
 (defun part2 (input)
+  ;; ugh global vars, sorry.
+  (setf *points* (parse-input input))
   (group-pairs (sort-distances (distances (parse-input input)))))
 
 #++
@@ -197,4 +198,5 @@
 
 #+ciel
 (part2 (str:from-file "day08.txt"))
-;; end condition not met :(
+;; 31182420
+;; o/

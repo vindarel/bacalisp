@@ -33,13 +33,13 @@
 #++
 (defparameter *points* (parse-input *input*))
 
-(defun distance-from-point-left (p)
+(defun distance-from-top-left (p)
   (sqrt (+ (expt (- (first p) 0) 2)
            (expt (- (second p) 0) 2))))
 
 
 (defun sort-by-distance-top-left (points)
-  (sort (copy-list points) #'< :key #'distance-from-point-left))
+  (sort (copy-list points) #'< :key #'distance-from-top-left))
 
 #++
 (defparameter *ordering* (sort-by-distance-top-left *points*))
@@ -50,7 +50,7 @@
     (* (1+ (- (second xs) (first xs)))
        (1+ (- (second ys) (first ys))))))
 
-(defun areas-left-to-rigth (points)
+(defun areas-left-to-right (points)
   (let ((ordering (sort-by-distance-top-left points)))
     (loop for p in ordering
           for i from 0 below (floor (length ordering) 2)
@@ -58,7 +58,7 @@
                          maximize (area p q)))))
 
 (defun part1 (input)
-  (areas-left-to-rigth (sort-by-distance-top-left (parse-input input))))
+  (areas-left-to-right (sort-by-distance-top-left (parse-input input))))
 
 #++
 (part1 *input*)

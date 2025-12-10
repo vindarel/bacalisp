@@ -11,6 +11,7 @@ https://lisp-journey.gitlab.io/blog/practice-for-advent-of-code-in-common-lisp/
 - https://git.sr.ht/~q3cpma/aoc2025/tree/master/item/01
 - https://github.com/Ytrog/adventofcode (first year ever)
 - https://nest.pijul.org/quickdudley/adventofcode:main/57A7YJ6RIIMFS.CAAAA
+- https://github.com/wsgac/advent-of-code-2024/blob/master/2025/
 
 ## day 03
 
@@ -69,3 +70,17 @@ Part one gets as simple as: (/u/nohillside)
 - https://www.reddit.com/r/adventofcode/comments/1pg9w66/2025_day_7_solutions/nsqrve4/
 - https://www.reddit.com/r/adventofcode/comments/1pg9w66/2025_day_7_solutions/nsqn3jd/
 - https://www.reddit.com/r/adventofcode/comments/1pg9w66/2025_day_7_solutions/nsqn3jd/
+
+## day 08
+
+- https://old.reddit.com/r/adventofcode/comments/1ph3tfc/2025_day_8_solutions/nt26px9/
+- wsgac: "Circuits are constructed by storing connectivity chains. Common circuit membership is established by following the connectivity chains till the end and comparing points. Tried Bron-Kerbosch before, but couldn't make it to work."
+
+## day 09
+
+- https://old.reddit.com/r/adventofcode/comments/1phywvn/2025_day_9_solutions/nt94p4v/
+- ak-coram: "Using DuckDB with the spatial extension feels a bit like cheating, but it was more fun for me to implement than a direct approach."
+
+## day 10
+
+hard

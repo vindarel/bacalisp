@@ -58,7 +58,7 @@
                          maximize (area p q)))))
 
 (defun part1 (input)
-  (areas-left-to-right (sort-by-distance-top-left (parse-input input))))
+  (areas-left-to-right (parse-input input)))
 
 #++
 (part1 *input*)

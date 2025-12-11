@@ -42,16 +42,23 @@ iii: out")
 (defun end-p (s)
   (equal s "out"))
 
-(defun follow (paths &key (start "you") current-path)
+#++
+(defun end-p (s)
+  (equal s "dac"))
+
+;; (function-cache:defcached follow (paths &key (start "you") current-path)
+;; nah, not for us here.
+
+(defun follow (paths &key (start "you") (end "out") current-path)
   (loop for output in (gethash start paths)
         sum
            (cond
-             ((end-p output)
+             ((equal end output)
               1)
              ((find output current-path :test #'equal)
               0)
              (t
-              (follow paths :start output :current-path (push output current-path))))))
+              (follow paths :start output :end end :current-path (push output current-path))))))
 
 #++
 (log:config :warn)
@@ -85,26 +92,44 @@ fff: ggg hhh
 ggg: out
 hhh: out")
 
-(defun follow/part2 (paths &key (start "svr") current-path visited-dac-p visited-fft-p)
+(defun reverse-paths (paths)
+  (loop for key being the hash-key of paths
+        for outputs = (gethash key paths)
+        with reversed = (dict)
+        do (loop for output in outputs
+                 do (push key (gethash output reversed))
+                    ;; (format t "~a: ~a~&" output key)
+                 )
+        finally (return reversed)))
+
+#++
+(defparameter *reversed-paths* (reverse-paths (parse-input *input*)))
+
+#++
+(follow *reversed-paths* :start "out" :end "you")
+;; 5 OK
+
+(defun follow/part2 (paths &key (start "svr") (end "out") current-path visited-dac-p visited-fft-p)
   (loop for output in (gethash start paths)
         sum
            ;; (log:info "with:" output current-path)
            (cond
-             ((end-p output)
-              (log:info "--> out:" current-path)
+             ((equal end output)
               (if (and visited-fft-p visited-dac-p)
-                  1
+                  (progn
+                    (log:info "--> out: " current-path)
+                    1)
                   0))
              ((find output current-path :test #'equal)
               (log:info "nope")
               0)
              (t
-              (log:info "continue…")
+              ;; (log:info "continue…")
               (when (equal "fft" output)
                 (setf visited-fft-p t))
               (when (equal "dac" output)
                 (setf visited-dac-p t))
-              (follow/part2 paths :start output
+              (follow/part2 paths :start output :end end
                             :current-path (push output current-path)
                             :visited-dac-p visited-dac-p
                             :visited-fft-p visited-fft-p
@@ -160,6 +185,8 @@ hhh: out")
 ;; with real input: > 10s
 ;; so should we learn about cycles and take shortcuts?
 
+#|
+
 ;; what if we studied the paths fft -> out and dac -> out ?
 
 (follow (parse-input *2ndinput*) :start "fft")
@@ -176,3 +203,43 @@ hhh: out")
 
 (follow (parse-input (str:from-file "day11.txt")) :start "fft")
 ;; too long. Is there a cycle?
+
+|#
+
+;; reversed?
+
+
+;; (defun follow/part2 (paths &key (start "svr") (end "out") current-path visited-dac-p visited-fft-p)
+(function-cache:defcached follow/part2 (paths &key (start "svr") (end "out") current-path visited-dac-p visited-fft-p)
+  (if (equal start end)
+      (if (and visited-fft-p visited-dac-p)
+                  (progn
+                    (log:info "--> out: " current-path)
+                    1)
+                  0)
+      (loop for output in (gethash start paths)
+        sum
+           ;; (log:info "with:" output current-path)
+           (cond
+             ;; ((equal end output)
+             ;;  (if (and visited-fft-p visited-dac-p)
+             ;;      (progn
+             ;;        (log:info "--> out: " current-path)
+             ;;        1)
+             ;;      0)
+             ;;  )
+             ((find output current-path :test #'equal)
+              (log:info "nope")
+              0)
+             (t
+              ;; (log:info "continue…")
+              (when (equal "fft" output)
+                (setf visited-fft-p t))
+              (when (equal "dac" output)
+                (setf visited-dac-p t))
+              (follow/part2 paths :start output :end end
+                            :current-path (push output current-path)
+                            :visited-dac-p visited-dac-p
+                            :visited-fft-p visited-fft-p
+                      )))))
+  )

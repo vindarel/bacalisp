@@ -1,0 +1,9 @@
+*.fasl
+/advent/*.txt
+/advent/*.js
+/advent/*.css
+/advent/2025/*.txt
+/advent/2024/*.txt
+/advent/*.html
+*.css
+*.js

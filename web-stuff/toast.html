@@ -1,0 +1,55 @@
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+
+    <link rel="stylesheet" href="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/tui-time-picker@2.1.6/dist/tui-time-picker.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tui-time-picker@2.1.6/dist/tui-time-picker.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/tui-date-picker@4.3.3/dist/tui-date-picker.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tui-date-picker@4.3.3/dist/tui-date-picker.min.css">
+
+    <script src="https://uicdn.toast.com/calendar/latest/toastui-calendar.min.js"></script>
+  </head>
+
+ <body>
+     <div id="calendar" style="height: 800px"></div>
+ </body>
+
+ <script>
+
+  console.log("-- cal ?");
+
+  const Calendar = tui.Calendar;
+
+  const calendar = new Calendar('#calendar', {
+      //defaultView: 'week',
+      defaultView: 'month',
+      useFormPopup: true,
+      useDetailPopup: true,
+      template: {
+          time(event) {
+              const { start, end, title } = event;
+
+              return `<span style="color: white;">${formatTime(start)}~${formatTime(end)} ${title}</span>`;
+          },
+          allday(event) {
+              return `<span style="color: gray;">${event.title}</span>`;
+          },
+      },
+      calendars: [
+          {
+              id: 'cal1',
+              name: 'Personal',
+              backgroundColor: '#03bd9e',
+          },
+          {
+              id: 'cal2',
+              name: 'Work',
+              backgroundColor: '#00a9ff',
+          },
+      ],
+  });
+
+ </script>
+</html>

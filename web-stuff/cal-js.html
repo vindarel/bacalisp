@@ -1,0 +1,60 @@
+
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+
+    <script src="https://cdn.jsdelivr.net/gh/williamtroup/Calendar.js@2.12.6/dist/calendar.min.js"></script>
+
+    <!-- i18n ? -->
+    <script src="https://cdn.jsdelivr.net/gh/williamtroup/Calendar.js@2.12.6/dist/translations/calendar.translations.fr.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/williamtroup/Calendar.js@2.12.6/dist/calendar.js.min.css">
+
+
+  </head>
+
+ <body>
+
+     <h1>calendar-js</h1>
+
+     <div id="calendar" >
+
+     </div>
+ </body>
+
+ <script>
+
+
+  var calendarElement = document.getElementById( "calendar" );
+  var calendarInstance = new calendarJs( calendarElement, __TRANSLATION_OPTIONS)
+
+  /* {
+   *     manualEditingEnabled: true, // contained in translation options.
+   *     // All your options can be set here
+   * } );
+   */
+
+  calendarInstance.setOptions( {
+      events: {
+
+          onEventAdded: ( event ) => {
+              // Seulement création de la boite sans les infos
+              console.log("event added: ", event);
+              // Important:
+              return event;
+          },
+
+
+          onEventUpdated: ( event ) => {
+              // Après ajout des infos.
+              console.log(" => event updated: ", event);
+              // Now optional:
+              return event;
+          },
+
+
+      },
+  } );
+
+ </script>
+</html>

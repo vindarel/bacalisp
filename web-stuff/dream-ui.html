@@ -1,0 +1,122 @@
+<!--
+Copyright 2025 Yawar Amin
+
+This file is part of dream-html UI.
+
+dream-html UI is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+dream-html UI is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+dream-html UI. If not, see <https://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dream-html UI - Combo Box</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+</head>
+
+<body>
+  <main class="m-4">
+    <h1 class="is-size-1">Combo Box</h1>
+    <div class="field is-horizontal">
+      <div class="field-label">
+        <label class="label" for="shipping-country">Shipping Country</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <dh-combobox class="dropdown">
+            <div class="control dropdown-trigger has-icons-left">
+              <input class=input type=search aria-haspopup=true aria-controls="shipping-country-dropdown-menu"
+                id="shipping-country" name="shipping-country" value="United Kingdom">
+              <span class="icon is-small is-left">🌎</span>
+            </div>
+            <div class="dropdown-menu" id="shipping-country-dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                <div class="dropdown-item has-text-weight-bold">A</div>
+                <button class=dropdown-item tabindex="0" value="Austria" role="menuitem">Austria</button>
+                <button class="dropdown-item" tabindex="1" value="Azerbaijan" role="menuitem">Azerbaijan</button>
+                <div class="dropdown-item has-text-weight-bold">U</div>
+                <button class="dropdown-item is-active" tabindex="2" value="United Kingdom" role="menuitem">United
+                  Kingdom</button>
+                <button class="dropdown-item" tabindex="3" value="United States" role="menuitem">United States</button>
+              </div>
+            </div>
+          </dh-combobox>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label">
+        <label class="label" for="billing-country">Billing Country</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <dh-combobox class="dropdown">
+            <div class="control dropdown-trigger has-icons-left">
+              <input class=input type=search aria-haspopup=true aria-controls="billing-country-dropdown-menu"
+                id="billing-country" name="billing-country" value="United Kingdom">
+              <span class="icon is-small is-left">🌎</span>
+            </div>
+            <div class="dropdown-menu" id="billing-country-dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                <button class=dropdown-item tabindex="0" value="Austria" role="menuitem">Austria</button>
+                <button class="dropdown-item" tabindex="1" value="Azerbaijan" role="menuitem">Azerbaijan</button>
+                <button class="dropdown-item is-active" tabindex="2" value="United Kingdom" role="menuitem">United
+                  Kingdom</button>
+                <button class="dropdown-item" tabindex="3" value="United States" role="menuitem">United States</button>
+              </div>
+            </div>
+            </combo-box>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label">
+        <label class="label" for="fruit">Fruit</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <dh-combobox class=dropdown list="fruits">
+            <div class="control dropdown-trigger has-icons-left">
+              <input class=input type="search" aria-haspopup=true id="fruit" name="fruit"
+                aria-controls="fruit-dropdown-menu" placeholder="Select a fruit">
+              <span class="icon is-small is-left">🔍</span>
+            </div>
+            <div class="dropdown-menu" role="menu" id="fruit-dropdown-menu">
+              <div class="dropdown-content">
+              </div>
+            </div>
+          </dh-combobox>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <datalist id="fruits">
+    <option value="Apple"></option>
+    <option value="Banana"></option>
+    <option value="Cherry"></option>
+    <option value="Durian"></option>
+    <option value="Mango"></option>
+    <option value="Pear"></option>
+    <option value="Plum"></option>
+    <option value="Rambutan"></option>
+    <option value="Strawberry"></option>
+  </datalist>
+
+  <script src="dh-ui.js"></script>
+</body>
+
+</html>

@@ -27,6 +27,12 @@ Trying out:
 - https://gantt-online.com/
   - more of a self-contained app.
 
+- server-based combobox search (on datalist, enhanced): https://yawaramin.github.io/dream-html-ui/dh-combobox.html
+  - https://github.com/yawaramin/dream-html-ui/
+
+> you can use htmx to update the datalist so it's effectively server-based active search
+> the key was to make the combo box watch for changes in the datalist using MutationObserver
+> it looks and works exactly the same way on all major browsers, plus instead of using a datalist it can also render more complex components as menu items
 
 # Use
 

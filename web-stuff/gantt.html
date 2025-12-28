@@ -1,0 +1,38 @@
+<script src="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.umd.js"></script>
+<link
+    data-comment="Just trying this Frappe Gantt chart open-source library.
+
+         - [ ] it has no 'add task' button ??
+
+         Usage: ciel -s simpleHTTPserver gantt.html"
+
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/frappe-gantt/dist/frappe-gantt.css"
+  />
+
+<body>
+
+    <h1>Gantt chart ?!</h1>
+
+    <div id="gantt" </div>
+</body>
+
+<script>
+
+  let tasks = [
+  {
+    id: '1',
+    name: 'Redesign website',
+    start: '2016-12-28',
+    end: '2016-12-31',
+    progress: 20
+  },
+  ]
+
+let gantt = new Gantt("#gantt", tasks);
+
+// Use .refresh to update the chart
+  //gantt.tasks.append(...)
+  gantt.tasks.refresh()
+
+</script>

@@ -1,5 +1,16 @@
 Trying out:
 
+# Typeahead, datalist, server-based search input.
+
+The browser's `datalist` is too minimal and useless.
+
+I use `select2` with some not-so-awful, but some JS.
+
+- dream-ui.lisp, testing this project seen on HTMX Discord: https://github.com/yawaramin/dream-html-ui/
+  - works fine. We can update the options with HTMX and even style them.
+  - that's huge!
+
+
 # Gantt charts
 
 - https://github.com/frappe/gantt

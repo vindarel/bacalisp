@@ -23,6 +23,9 @@ dream-html UI. If not, see <https://www.gnu.org/licenses/>.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>dream-html UI - Combo Box</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js"></script>
+
 </head>
 
 <body>
@@ -88,33 +91,56 @@ dream-html UI. If not, see <https://www.gnu.org/licenses/>.
       </div>
       <div class="field-body">
         <div class="field">
-          <dh-combobox class=dropdown list="fruits">
+
+          <!-- This should work with HTMX. -->
+          <!-- <dh-combobox class=dropdown list="fruits"> -->
+          <dh-combobox class=dropdown>
             <div class="control dropdown-trigger has-icons-left">
-              <input class=input type="search" aria-haspopup=true id="fruit" name="fruit"
-                aria-controls="fruit-dropdown-menu" placeholder="Select a fruit">
+              <input class=input type="search"
+                     id="fruit"
+                     name="fruit"
+
+                     hx-get="/combobox"
+                     hx-target="#fruits"
+                     hx-trigger="keyup changed delay:500ms"
+
+                     placeholder="Select a fruit">
               <span class="icon is-small is-left">🔍</span>
             </div>
             <div class="dropdown-menu" role="menu" id="fruit-dropdown-menu">
-              <div class="dropdown-content">
+              <div id="fruits" class="dropdown-content">
+
+                <!-- Let's update with HTMX here. -->
+                <!-- Each element is like: -->
+                <!-- <button class=dropdown-item tabindex="0" value="Austria" role="menuitem">Austria</button> -->
+                <!-- It must follow Bulma's dropdown rules: -->
+                <!-- https://bulma.io/documentation/components/dropdown/#dropdown-content -->
+
               </div>
             </div>
           </dh-combobox>
+
         </div>
       </div>
     </div>
   </main>
 
-  <datalist id="fruits">
-    <option value="Apple"></option>
-    <option value="Banana"></option>
-    <option value="Cherry"></option>
-    <option value="Durian"></option>
-    <option value="Mango"></option>
-    <option value="Pear"></option>
-    <option value="Plum"></option>
-    <option value="Rambutan"></option>
-    <option value="Strawberry"></option>
-  </datalist>
+  <!-- Initial datalist that goes with the example. To use HTMX, we DO NOT update this list, but the dropdow-content result -->
+
+  <!-- <datalist id="fruits"> -->
+  <!--   <\!-- We can put an ID and a text label. -\-> -->
+  <!--   <option value="Apple">Apple Pie !!!</option> -->
+  <!--   <\!-- No custom markup, no template. -\-> -->
+  <!--   <option value="Banana"> <b>Banana</b> cake, this is seen in the browser</option> -->
+  <!--   <\!-- Wait: this is not the place to update with HTMX (given creator's words on Discord) -\-> -->
+  <!--   <option value="Cherry"></option> -->
+  <!--   <option value="Durian"></option> -->
+  <!--   <option value="Mango"></option> -->
+  <!--   <option value="Pear"></option> -->
+  <!--   <option value="Plum"></option> -->
+  <!--   <option value="Rambutan"></option> -->
+  <!--   <option value="Strawberry"></option> -->
+  <!-- </datalist> -->
 
   <script src="dh-ui.js"></script>
 </body>

@@ -6,6 +6,7 @@
    - hunchentoot
    - pythonic-string-reader
    - log4cl
+   - str
    (or just CIEL)
 
    and datastar-cl https://github.com/fsmunoz/datastar-cl?tab=readme-ov-file"))
@@ -59,7 +60,7 @@
         type="text"
         placeholder="Search..."
         data-bind:search
-        data-on:input__debounce.200ms="@get('/search')"
+        data-on:input__debounce.500ms="@get('/search')"
       />
 
       <div id="results"></div>
@@ -69,6 +70,9 @@
 
   """")
 
+;; State: we need to keep all state right?
+(defparameter *searches* (list))
+
 
 ;; routes
 
@@ -76,6 +80,21 @@
   (setf (hunchentoot:content-type*) "text/html; charset=utf-8")
   (index))
 
+(defun results (searches)
+  "We must keep all state here, I guess? Instead of pushing and adding one single element to a list of divs."
+  ;; xxx: use templates or the markup library.
+  (with-output-to-string (s)
+    (princ """"<div id="results">"""" s)
+    (loop for search in searches
+          do
+             (format s
+                     """"
+                     <div>
+                     you searched for: ~a
+                     </div>
+                     """"
+                     search))
+    (princ "</div>" s)))
 
 (hunchentoot:define-easy-handler (details-handler :uri "/search") ()
   "Process signals, send HTML fragments."
@@ -84,13 +103,8 @@
       (log:info signals)
       (when signals
         (let ((q (gethash "search" signals)))
-          (when q
+          (when (and q (str:non-blank-string-p q))
+            (pushnew q *searches*)
             (datastar-cl:patch-elements gen
-                                        (format nil
-                                                """"
-                                                <div id="results">
-                                                you are searching for: ~a
-                                                </div>
-                                                """"
-                                                q
-                                                ))))))))
+                                       (results *searches*)
+                                        )))))))

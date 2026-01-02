@@ -25,15 +25,7 @@ I use `select2` with some not-so-awful, but some JS.
 
 => very functional, open-core. Grouping tasks only in PRO version :/
 
-# Calendars?
-
-- https://github.com/williamtroup/Calendar.js => at last. Full featured. In `cal-js.html`.
-- https://github.com/nhn/tui.calendar Wow! Full featured?!
-- https://schedule-x.dev/docs/calendar/plugins/interactive-event-modal
-  - create/edit events in a modale is a PRO feature.
-- https://fullcalendar.io/docs/external-dragging how to create events?
-
-# to test
+## to test
 
 - https://gantt-online.com/
   - more of a self-contained app.
@@ -45,9 +37,22 @@ I use `select2` with some not-so-awful, but some JS.
 > the key was to make the combo box watch for changes in the datalist using MutationObserver
 > it looks and works exactly the same way on all major browsers, plus instead of using a datalist it can also render more complex components as menu items
 
+
+# Calendars?
+
+- https://github.com/williamtroup/Calendar.js => at last. Full featured. In `cal-js.html`.
+- https://github.com/nhn/tui.calendar Wow! Full featured?!
+- https://schedule-x.dev/docs/calendar/plugins/interactive-event-modal
+  - create/edit events in a modale is a PRO feature.
+- https://fullcalendar.io/docs/external-dragging how to create events?
+
 # Use
 
 This is only web stuff right? Here's a Lisp tip, a CLI one-liner to
 launch a local webserver:
 
     ciel - simplehttpserver
+
+# DataStar
+
+minimal example with https://github.com/fsmunoz/datastar-cl o/

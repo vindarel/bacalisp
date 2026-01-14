@@ -12,6 +12,8 @@ https://lisp-journey.gitlab.io/blog/practice-for-advent-of-code-in-common-lisp/
 - https://github.com/Ytrog/adventofcode (first year ever)
 - https://nest.pijul.org/quickdudley/adventofcode:main/57A7YJ6RIIMFS.CAAAA
 - https://github.com/wsgac/advent-of-code-2024/blob/master/2025/
+- https://github.com/DanielKeogh/aoc-2025/tree/main
+- https://github.com/argentcorvid/aoc-2025
 
 ## day 03
 
@@ -38,6 +40,7 @@ So, yes: I picked this hill to die on just to do something clever & lisp-y: If y
 4. liberally apply parentheses,
 
 you produce a list of valid lisp expressions such as (+ 4 431 623) that can each be directly evaluated (i.e., eval '(+ 4 431 623)) and summed in a big sweep.
+
 ---
 
 Part one gets as simple as: (/u/nohillside)
@@ -80,7 +83,17 @@ Part one gets as simple as: (/u/nohillside)
 
 - https://old.reddit.com/r/adventofcode/comments/1phywvn/2025_day_9_solutions/nt94p4v/
 - ak-coram: "Using DuckDB with the spatial extension feels a bit like cheating, but it was more fun for me to implement than a direct approach."
+- https://github.com/DanielKeogh/aoc-2025/blob/main/day10.lisp#L66
+- z3 solver bindings: https://github.com/mister-walter/cl-z3
+
+"I used https://www.gnu.org/software/glpk/ instead of z3. Looks like there's a cl binding for it even, https://github.com/neil-lindquist/linear-programming-glpk but I just wrote .lp files and ran glpsol on them."
+
+Jach
 
 ## day 10
 
 hard
+
+## day 11
+
+- https://www.reddit.com/r/adventofcode/comments/1pjp1rm/2025_day_11_solutions/ntf9avo/ recursion and memoization.

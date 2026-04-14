@@ -8,6 +8,8 @@
           )
   (:documentation "ranges -> writing some utilities to create and merge ranges. That's the right approach I believe :)"))
 
+;; ranges -> see FSet's set intervals? https://fset.common-lisp.dev/Modern-CL/Top_html/Interval-Sets.html
+
 (in-package :aoc-2025-05)
 
 (defparameter *input* "3-5

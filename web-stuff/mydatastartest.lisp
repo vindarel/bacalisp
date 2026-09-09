@@ -14,6 +14,8 @@
 
 (in-package :mydatastar)
 
+(pythonic-string-reader:enable-pythonic-string-syntax)
+
 
 (defparameter *port* 7000
   "Port for Hunchentoot HTTP server")
@@ -37,8 +39,6 @@
     (setf *server* nil)))
 
 ;; templates
-
-(pythonic-string-reader:enable-pythonic-string-syntax)
 
 (defun index ()
   "return: string"
@@ -76,7 +76,7 @@
 
 ;; routes
 
-(hunchentoot:define-easy-handler (index :uri "/") ()
+(hunchentoot:define-easy-handler (root :uri "/") ()
   (setf (hunchentoot:content-type*) "text/html; charset=utf-8")
   (index))
 
@@ -99,7 +99,7 @@
 (hunchentoot:define-easy-handler (details-handler :uri "/search") ()
   "Process signals, send HTML fragments."
   (let ((signals (datastar-cl:read-signals hunchentoot:*request*)))
-    (datastar-cl:with-sse-response (gen hunchentoot:*request*)
+    (datastar-cl:with-sse (gen hunchentoot:*request*)
       (log:info signals)
       (when signals
         (let ((q (gethash "search" signals)))

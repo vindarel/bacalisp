@@ -1,5 +1,26 @@
 Trying out:
 
+# Fluxion reactive web framework
+
+https://github.com/parenworks/Fluxion
+
+The examples work.
+
+They work with Clack and Woo (libev). The snippet to use Hunchentoot does not work. See issue #2.
+
+https://github.com/parenworks/Fluxion/issues/2
+
+```lisp
+(make-instance 'fluxion-app :server :hunchentoot)
+=>
+#<FLUXION-APP :5000 hunchentoot 0 sessions {120647DB73}>
+
+(start #<FLUXION-APP :5000 hunchentoot 0 sessions {120647DB73}> (make-router))
+=>
+Clack.utils error: hunchentoot is unknown handler
+```
+
+
 # Typeahead, datalist, server-based search input.
 
 The browser's `datalist` is too minimal and useless.

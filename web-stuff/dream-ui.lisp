@@ -1,4 +1,7 @@
 
+(eval-when (:execute)  ;; enough?
+  (ql:quickload "find-port"))
+
 (defpackage :dream-ui
   (:use :cl
    :ciel))
@@ -17,9 +20,6 @@ Yes!!
 
 This works with HTMX.
 "
-
-(eval-when (:execute)  ;; enough?
-  (ql:quickload "find-port"))
 
 (enable-pythonic-string-syntax)
 
@@ -54,15 +54,21 @@ This works with HTMX.
           with i = 0
           when (str:containsp q option)
             do
-               (unless (zerop i)
-                 (format s """"
-                        <hr class="dropdown-divider" />
-                        """") )
                 (format s """"
                           <button class=dropdown-item tabindex="~a"
                             value="~a" role="menuitem">
-                            ~a
-                        </button>
+                            <table>
+                            <tr>
+                              <td>
+                                <img src="https://images.epagine.fr/117/9782488115117_1_75.jpg"
+                                    style="max-width: 50px"/>
+                              </td>
+                              <td style="padding-left: 5px">
+                                ~a
+                              </td>
+                            </tr>
+                           </table>
+                          </button>
                           """"
                           i
                           option

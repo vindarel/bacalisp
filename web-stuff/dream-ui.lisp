@@ -23,7 +23,7 @@ This works with HTMX.
 
 (enable-pythonic-string-syntax)
 
-(defparameter *server* nil)
+(defvar *server* nil)
 
 (defparameter *index.html* (str:from-file "dream-ui.html"))
 

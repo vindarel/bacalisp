@@ -1,5 +1,42 @@
 Trying out:
 
+# DataStar
+
+with https://github.com/fsmunoz/datastar-cl
+
+## minimal example
+
+We get a minimal example going. Type something, it's displayed below.
+
+## Server-based autocomplete
+
+We use dream-ui's combobox (see below) with datastar.
+
+aka: **a server-based autocomplete/select2-like interactive search with
+no JavaScript at all**.
+
+The component is fine. We can style each result (include a small image etc).
+
+The keyboard selection is OK when you don't mess up the tab index ;) (a number)
+
+![](datastar-dreamui.png)
+
+in `datastar-dream-ui.lisp`.
+
+We also try the markup library: it's good, it even has an Emacs plugin
+to have HTML highlighting inside our Lisp code. One caveat:
+
+- we can't write a non-closing HTML snippet (or only the closing part).
+
+
+# Dream-ui's server-based combobox search with HTMX
+
+It's an autocomplete/select2 like component that we can update with
+HTMX. No JavaScript required.
+
+https://github.com/yawaramin/dream-html-ui (look, 1 single star)
+
+
 # Fluxion reactive web framework
 
 https://github.com/parenworks/Fluxion
@@ -73,7 +110,3 @@ This is only web stuff right? Here's a Lisp tip, a CLI one-liner to
 launch a local webserver:
 
     ciel - simplehttpserver
-
-# DataStar
-
-minimal example with https://github.com/fsmunoz/datastar-cl o/

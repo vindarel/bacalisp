@@ -1,10 +1,17 @@
 
 (eval-when (:execute)  ;; enough?
-  (ql:quickload "find-port"))
+  ;; or CIEL
+  (ql:quickload '("find-port"
+                  "hunchentoot"
+                  "easy-routes"
+                  "pythonic-string-reader"
+                  "str"
+                  )))
 
 (defpackage :dream-ui
   (:use :cl
-   :ciel))
+   ;; :ciel
+   ))
 
 (in-package :dream-ui)
 
@@ -21,7 +28,7 @@ Yes!!
 This works with HTMX.
 "
 
-(enable-pythonic-string-syntax)
+(pythonic-string-reader:enable-pythonic-string-syntax)
 
 (defvar *server* nil)
 
@@ -76,6 +83,7 @@ This works with HTMX.
                 (incf i))
     ))
 
+;; The route in the HTML combobox (hx-get)
 (easy-routes:defroute typeahead ("/combobox") ()
   ;; XXX: not called??
   (format t "==> this is the search input: ~s ~&" (hunchentoot:get-parameter "fruit"))
@@ -90,7 +98,7 @@ This works with HTMX.
   (setf *server* (make-instance 'easy-routes:easy-routes-acceptor :port port))
   (hunchentoot:start *server*)
   (serve-static-assets)
-  (format! t "started Hunchentoot on port ~a" port))
+  (uiop:format! t "started Hunchentoot on port ~a" port))
 
 (defun stop-app ()
   (hunchentoot:stop *server*))

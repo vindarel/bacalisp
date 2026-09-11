@@ -26,7 +26,13 @@ dream-html UI. If not, see <https://www.gnu.org/licenses/>.
   <title>dream-html UI - Combo Box</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
 
+  <!-- Bulma CSS -->
   <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js"></script>
+
+  <!-- Datastar -->
+  <script type="module" src="https://cdn.jsdelivr.net/gh/starfederation/datastar@1.0.0-RC.7/bundles/datastar.js"></script>
+
+  <!-- Dream-ui is loaded at the end. -->
 
 </head>
 
@@ -125,6 +131,55 @@ dream-html UI. If not, see <https://www.gnu.org/licenses/>.
         </div>
       </div>
     </div>
+
+
+    <h4 class="title is-4"> Server-based interactive search with datastar and dream-ui </h4>
+
+    <div class="field is-horizontal">
+      <div class="field-label">
+        <label class="label" for="q">number (one, two…)</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+
+          <!-- This should work with HTMX. -->
+          <!-- <dh-combobox class=dropdown list="fruits"> -->
+          <dh-combobox class=dropdown>
+            <div class="control dropdown-trigger has-icons-left">
+              <input class=input type="search"
+                     id="q"
+                     name="q"
+                     autocomplete="off"
+                     data-bind:search
+                     data-on:input__debounce.500ms="@get('/search')"
+
+
+                     placeholder="Type a number (one, two…)">
+              <span class="icon is-small is-left">🔍</span>
+            </div>
+            <div class="dropdown-menu" role="menu" id="fruit-dropdown-menu">
+                <div id="datastar-search-results" class="dropdown-content">
+
+                    <!-- Let's update with Datastar here. -->
+
+                    <!-- Can we append elements? -->
+                    <!-- morphing strategies:
+                         https://data-star.dev/reference/sse_events#datastar-patch-elements
+                    -->
+
+                    <!-- Each element is like: -->
+                    <!-- <button class=dropdown-item tabindex="0" value="Austria" role="menuitem">Austria</button> -->
+                    <!-- It must follow Bulma's dropdown rules: -->
+                    <!-- https://bulma.io/documentation/components/dropdown/#dropdown-content -->
+
+                </div>
+            </div>
+          </dh-combobox>
+
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <!-- Initial datalist that goes with the example. To use HTMX, we DO NOT update this list, but the dropdow-content result -->

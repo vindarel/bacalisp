@@ -15,7 +15,8 @@ We use dream-ui's combobox (see below) with datastar.
 aka: **a server-based autocomplete/select2-like interactive search with
 no JavaScript at all**.
 
-The component is fine. We can style each result (include a small image etc).
+The component is fine. We can style each result (include a small image
+etc), following [Bulma's dropdown rules](https://bulma.io/documentation/components/dropdown/#dropdown-content).
 
 The keyboard selection is OK when you don't mess up the tab index ;) (a number)
 

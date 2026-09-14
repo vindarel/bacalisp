@@ -56,7 +56,7 @@
         hunchentoot:*dispatch-table*))
 
 ;; user-facing UI:
-(easy-routes:defroute index ("/datastar-dream-ui/") ()
+(easy-routes:defroute index ("/") ()
   *index.html*)
 
 (defun gen-data (&optional (n 50))
@@ -132,6 +132,8 @@
           (datastar-cl:patch-elements resp html))))))
 
 (defun start-app (&key port)
+  "Ensure static files are served (for dh-ui.js and dh-ui.css),
+  start server."
   (unless port
     (setf port (find-port:find-port)))
   (setf *server* (make-instance 'easy-routes:easy-routes-acceptor :port port))
